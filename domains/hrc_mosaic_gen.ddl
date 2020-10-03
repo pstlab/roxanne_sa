@@ -1103,8 +1103,9 @@ DOMAIN SHAREWORK_HRC_MOSAIC_GEN {
 			r3 Mosaic.process.DoRow4();
 			CONTAINS [0, +INF] [0, +INF] r3;
 
-//			r4 Mosaic.process.DoRow5();
-//			CONTAINS [0, +INF] [0, +INF] r4;
+			r4 Mosaic.process.DoRow5();
+			CONTAINS [0, +INF] [0, +INF] r4;
+
 		}
 	}
 

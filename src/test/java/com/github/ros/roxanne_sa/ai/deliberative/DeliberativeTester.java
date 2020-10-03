@@ -19,8 +19,8 @@ public class DeliberativeTester
 //	private static final String DDL = "domains/sharework/stiima/hrc_mosaic_v1.ddl";
 //	private static final String PDL = "domains/sharework/stiima/hrc_mosaic.pdl";
 	
-//	private static final String DDL = "gen/sharework/hrc_mosaic_gen.ddl";
-//	private static final String PDL = "gen/sharework/hrc_mosaic_gen.pdl";
+//	private static final String DDL = "domains/hrc_mosaic_gen.ddl";
+//	private static final String PDL = "domains/hrc_mosaic_gen.pdl";
 	
 	private static final String DDL = "domains/satellite.ddl";
 	private static final String PDL = "domains/satellite.pdl";

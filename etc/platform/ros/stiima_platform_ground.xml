@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ros host="ws://192.168.1.7:9090">
+
+	<command name="pickplacea1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceb1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaced1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej1" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	
+	
+	
+	<command name="pickplacea2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceb2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaced2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej2" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	<command name="pickplacea3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceb3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaced3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej3" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	<command name="pickplacea4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceb4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaced4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej4" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacea5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceb5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaced5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej5" component="Robot">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/motion" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/motion/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	<command name="pickplacea1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaceb1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaced1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej1" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	
+	
+	<command name="pickplacea2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaceb2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaced2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej2" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	<command name="pickplacea3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaceb3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaced3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej3" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacea4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaceb4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaced4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej4" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	
+	<command name="pickplacea5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplaceb5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	
+	<command name="pickplacec5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaced5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacee5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacef5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceg5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplaceh5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacei5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+	<command name="pickplacej5" component="Human">
+	
+		<dispatch-topic 
+			name="/sharework/test/stiima/human" 
+			msg="stiima_listener/MotionTaskExecutionRequestArray"
+			publisher="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskRequestPublisher" />
+			
+		<feedback-topic 
+			name="/sharework/test/stiima/human/feedback" 
+			msg="stiima_listener/MotionTaskExecutionFeedback"
+			delegate="it.cnr.istc.pst.ros.roxanne.platform.rosbridge.stiima.MotionTaskFeedbackListener" />
+			
+	</command>
+	
+</ros>

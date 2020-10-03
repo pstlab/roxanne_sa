@@ -1,0 +1,113 @@
+horizon = 500
+plan {
+	timelines {
+		PointingMode {
+			token 0  { Earth [1,122] [1, 122] }
+			token 1  { Slewing [2,123] [1, 122] }
+			token 2  { Target [5,126] [3, 124] }
+			token 3  { Slewing [6,127] [1, 122] }
+			token 4  { Target [9,130] [3, 124] }
+			token 5  { Slewing [10,131] [1, 122] }
+			token 6  { Earth [15,136] [5, 126] }
+			token 7  { Slewing [16,137] [1, 122] }
+			token 8  { Target [19,140] [3, 124] }
+			token 9  { Slewing [20,141] [1, 122] }
+			token 10  { Target [23,144] [3, 124] }
+			token 11  { Slewing [24,145] [1, 122] }
+			token 12  { Earth [29,150] [5, 126] }
+			token 13  { Slewing [30,151] [1, 122] }
+			token 14  { Target [33,154] [3, 124] }
+			token 15  { Slewing [34,155] [1, 122] }
+			token 16  { Earth [39,500] [5, 466] }
+		}
+		Satellite {
+			token 17  { Science [5,126] [3, 7] }
+			token 18  { Science [9,130] [3, 7] }
+			token 19 uncontrollable { _Communicate [15,136] [5, 8] }
+			token 20 uncontrollable { _Communicate [15,136] [5, 8] }
+			token 21  { Science [19,140] [3, 7] }
+			token 22  { Science [23,144] [3, 7] }
+			token 23 uncontrollable { _Communicate [29,150] [5, 8] }
+			token 24 uncontrollable { _Communicate [29,150] [5, 8] }
+			token 25  { Science [33,154] [3, 7] }
+			token 26 uncontrollable { _Communicate [39,160] [5, 8] }
+		}
+	}
+	relations {
+		PointingMode 7 meets PointingMode 8
+		PointingMode 2 meets PointingMode 3
+		PointingMode 3 meets PointingMode 4
+		Satellite 21 during [0,500]  [0,500] PointingMode 8
+		Satellite 21 before [0,500] Satellite 23
+		Satellite 23 during [0,500]  [0,500] GroundStationWindow 28
+		Satellite 23 during [0,500]  [0,500] PointingMode 12
+		Satellite 25 during [0,500]  [0,500] PointingMode 14
+		Satellite 25 before [0,500] Satellite 26
+		Satellite 22 during [0,500]  [0,500] PointingMode 10
+		Satellite 22 before [0,500] Satellite 24
+		PointingMode 0 before [0,500] PointingMode 8
+		Satellite 18 during [0,500]  [0,500] PointingMode 4
+		Satellite 18 before [0,500] Satellite 20
+		PointingMode 0 before [0,500] PointingMode 10
+		PointingMode 8 before [0,500] PointingMode 10
+		Satellite 20 during [0,500]  [0,500] GroundStationWindow 28
+		Satellite 20 during [0,500]  [0,500] PointingMode 6
+		PointingMode 4 before [0,500] PointingMode 8
+		PointingMode 0 before [0,500] PointingMode 4
+		Satellite 24 during [0,500]  [0,500] GroundStationWindow 28
+		Satellite 24 during [0,500]  [0,500] PointingMode 12
+		Satellite 26 during [0,500]  [0,500] GroundStationWindow 28
+		Satellite 26 during [0,500]  [0,500] PointingMode 16
+		Satellite 17 during [0,500]  [0,500] PointingMode 2
+		Satellite 17 before [0,500] Satellite 19
+		PointingMode 0 before [0,500] PointingMode 6
+		PointingMode 4 before [0,500] PointingMode 6
+		PointingMode 6 before [0,500] PointingMode 8
+		PointingMode 4 before [0,500] PointingMode 12
+		PointingMode 10 before [0,500] PointingMode 12
+		Satellite 19 during [0,500]  [0,500] GroundStationWindow 28
+		Satellite 19 during [0,500]  [0,500] PointingMode 6
+		PointingMode 0 before [0,500] PointingMode 2
+		PointingMode 2 before [0,500] PointingMode 8
+		PointingMode 2 before [0,500] PointingMode 4
+		PointingMode 0 before [0,500] PointingMode 14
+		PointingMode 12 before [0,500] PointingMode 14
+		PointingMode 6 before [0,500] PointingMode 16
+		PointingMode 10 before [0,500] PointingMode 16
+		PointingMode 12 before [0,500] PointingMode 16
+		PointingMode 14 before [0,500] PointingMode 16
+		PointingMode 8 meets PointingMode 9
+		PointingMode 9 meets PointingMode 10
+		PointingMode 14 meets PointingMode 15
+		PointingMode 15 meets PointingMode 16
+		PointingMode 0 meets PointingMode 1
+		PointingMode 1 meets PointingMode 2
+		PointingMode 4 meets PointingMode 5
+		PointingMode 5 meets PointingMode 6
+		PointingMode 12 meets PointingMode 13
+		PointingMode 13 meets PointingMode 14
+		PointingMode 10 meets PointingMode 11
+		PointingMode 11 meets PointingMode 12
+		PointingMode 6 meets PointingMode 7
+	}
+}
+observation {
+	timelines {
+		GroundStationWindow {
+			token 27  { NotVisible [10,10] [10, 10] }
+			token 28  { Visible [160,160] [150, 150] }
+			token 29  { NotVisible [200,200] [40, 40] }
+			token 30  { Visible [300,300] [100, 100] }
+			token 31  { NotVisible [310,310] [10, 10] }
+			token 32  { Visible [460,460] [150, 150] }
+			token 33  { NotVisible [500,500] [40, 40] }
+		}
+		SunWindow {
+			token 34  { NotVisible [50,50] [50, 50] }
+			token 35  { Visible [250,250] [200, 200] }
+			token 36  { NotVisible [300,300] [50, 50] }
+			token 37  { Visible [450,450] [150, 150] }
+			token 38  { NotVisible [500,500] [50, 50] }
+		}
+	}
+}

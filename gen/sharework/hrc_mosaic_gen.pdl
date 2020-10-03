@@ -1,0 +1,6 @@
+PROBLEM SHAREWORK_HRC_MOSAIC_PRO (DOMAIN SHAREWORK_HRC_MOSAIC_GEN) {
+
+	g0 <goal> Goal.hrc.DoMosaic() AT [0, 7000] [0, 7000] [0, 7000];
+
+}
+

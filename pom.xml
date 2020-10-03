@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.cnr.istc.pst.ros</groupId>
+  <artifactId>roxanne_taskplanner_sa</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <name>ROXANNE</name>
+  <url>ROs fleXible ActiNg coNtrollEr</url>
+  <description>Although reliable and effective, standard control techniques are static and may limit the adaptability of robotic systems to modern production needs. Flexible production systems require a high degree of flexibility to address changing production goals. Flexibility is also a strong requirement in Human-Robot Collaboration where robots must cooperate and interact with humans at different levels. Artificial Intelligence can enhance robot controllers with the flexibility needed to achieve the desired level of autonomy. ROXANNE (ROs fleXible ActiNg coNtrollEr) proposes a ROS package to facilitate the integration of AI planning and execution techniques with robotic platforms and their deployment in robotic applications.</description>
+	
+	<organization>
+		<name>National Research Council of Italy</name>
+	</organization>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+    	<maven.compiler.release>1.8</maven.compiler.release>
+	    <skipTests>true</skipTests>
+  	</properties>	
+  
+  <dependencies>
+
+
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+	        <groupId>org.mongodb</groupId>
+        	<artifactId>mongo-java-driver</artifactId>
+	        <version>3.12.4</version>
+	</dependency>
+ 	
+  	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>3.10</version>
+	</dependency>
+	
+  	<dependency>
+  		<groupId>org.choco-solver</groupId>
+  		<artifactId>choco-solver</artifactId>
+		<version>4.0.2</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.antlr</groupId>
+  		<artifactId>antlr</artifactId>
+  		<version>3.5.2</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.jfree</groupId>
+  		<artifactId>jfreechart</artifactId>
+  		<version>1.0.19</version>
+  	</dependency>
+  	
+  	<dependency>
+	  <groupId>edu.brown.cs.burlap</groupId>
+	  <artifactId>java_rosbridge</artifactId>
+	  <version>2.0.1</version>
+	</dependency>
+	
+  </dependencies>
+  	
+</project>

@@ -6,9 +6,8 @@ package com.github.ros.roxanne_sa.control.lang;
  * @author alessandroumbrico
  *
  */
-public class PlatformObservation<T extends Object> implements Comparable<PlatformObservation<? extends Object>>
+public class PlatformObservation<T extends Object> extends PlatformMessage implements Comparable<PlatformObservation<? extends Object>>
 {
-	private String id;						// observation ID
 	private long time;						// observation generation time
 	private T data;							// generic data object containing observed information
 	
@@ -17,19 +16,10 @@ public class PlatformObservation<T extends Object> implements Comparable<Platfor
 	 * @param id
 	 * @param data
 	 */
-	public PlatformObservation(String id, T data) {
-		this.id = id;
+	public PlatformObservation(long id, T data) {
+		super(id);
 		this.data = data;
 		this.time = System.currentTimeMillis();
-		
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public String getId() {
-		return id;
 	}
 	
 	/**
@@ -62,6 +52,7 @@ public class PlatformObservation<T extends Object> implements Comparable<Platfor
 	 */
 	@Override
 	public String toString() {
-		return "[PlatformObservation id: " + this.id + ", data: " + this.data + "]";
+		// JSON style description
+		return "{\"id\": " + this.id + ", \"data\": " + this.data + "}";
 	}
 }

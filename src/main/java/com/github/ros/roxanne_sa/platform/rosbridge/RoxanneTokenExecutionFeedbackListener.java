@@ -1,12 +1,10 @@
-package com.github.ros.roxanne_sa.platform.rosbridge.lms;
+package com.github.ros.roxanne_sa.platform.rosbridge;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
 import com.github.ros.roxanne_sa.control.lang.PlatformFeedback;
 import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
 import com.github.ros.roxanne_sa.platform.msgs.TokenExecutionFeedback;
-import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
-import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicListener;
 
 import ros.tools.MessageUnpacker;
 
@@ -15,16 +13,15 @@ import ros.tools.MessageUnpacker;
  * @author alessandroumbrico
  *
  */
-public class TaskFeedbackListener extends RosBridgeTopicListener 
+public class RoxanneTokenExecutionFeedbackListener extends RosBridgeTopicListener<PlatformFeedback> 
 {
 	/**
 	 * 
 	 * @param proxy
 	 */
-	protected TaskFeedbackListener(RosBridgePlatformProxy proxy) {
+	protected RoxanneTokenExecutionFeedbackListener(RosBridgePlatformProxy proxy) {
 		super(proxy);
 	}
-	
 
 	/**
 	 * 
@@ -34,19 +31,22 @@ public class TaskFeedbackListener extends RosBridgeTopicListener
 			throws PlatformCommunicationException 
 	{
 		// get message unpacker
-		MessageUnpacker<TokenExecutionFeedback> unpacker = new MessageUnpacker<TokenExecutionFeedback>(TokenExecutionFeedback.class);
+		MessageUnpacker<TokenExecutionFeedback> unpacker = 
+				new MessageUnpacker<TokenExecutionFeedback>(TokenExecutionFeedback.class);
+		// get message content
 		TokenExecutionFeedback content = unpacker.unpackRosMessage(data);
 		
 		// retrieve issuing command
-		PlatformCommand cmd = this.proxy.getDispatchedCommand(content.cmd_id);
+		PlatformCommand cmd = this.proxy.getDispatchedCommand(content.getCmdId());
 		// check command
 		if (cmd == null) {
-			throw new PlatformCommunicationException("Received feedback concerning a non-dispatched command:\n\t- cmdId: " + content.cmd_id);
+			throw new PlatformCommunicationException("Received feedback about a non-dispatched command:\n\t- cmdId: " + content.getCmdId());
 		}
 		
-		// create action feedback
-		PlatformFeedback feedback = new PlatformFeedback(cmd, content.getResult());
-		// get action feedback
+		// create platform feedback
+		PlatformFeedback feedback = new PlatformFeedback(
+				msgIdCounter.getAndIncrement(), cmd, content.getFeedbackType());
+		// get feedback message
 		return feedback;
 	}
 }

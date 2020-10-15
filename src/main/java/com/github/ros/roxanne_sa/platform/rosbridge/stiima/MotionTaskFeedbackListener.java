@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
 import com.github.ros.roxanne_sa.control.lang.PlatformFeedback;
 import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSBridgePlatformProxy;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSFeedbackListener;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicListener;
 import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionFeedback;
 
 import ros.tools.MessageUnpacker;
@@ -15,13 +15,13 @@ import ros.tools.MessageUnpacker;
  * @author alessandroumbrico
  *
  */
-public class MotionTaskFeedbackListener extends ROSFeedbackListener 
+public class MotionTaskFeedbackListener extends RosBridgeTopicListener 
 {
 	/**
 	 * 
 	 * @param proxy
 	 */
-	protected MotionTaskFeedbackListener(ROSBridgePlatformProxy proxy) {
+	protected MotionTaskFeedbackListener(RosBridgePlatformProxy proxy) {
 		super(proxy);
 	}
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ros host="ws://192.168.1.7:9090">
+
+	<goal-topic 
+		name="/roxanne/acting/task"
+		msg="roxanne_rosjava_msgs/ActingGoal"
+		delegate="com.github.ros.roxanne_sa.platform.rosbridge.ActingGoalListener" />
+
+	<environment-topic 
+		name="/roxanne/acting/observation" 
+		msg="roxanne_rosjava_msgs/Observation"
+		delegate="com.github.ros.roxanne_sa.platform.rosbridge.RoxanneObservationListener" />
+
+	<!-- wildcard matching any type of dispatchable token of a plan -->
+	
+	<command name="*" component="*">
+	
+		<dispatch-topic 
+			name="/roxanne/acting/dispatching" 
+			msg="roxanne_rosjava_msgs/TokenExecution"
+			publisher="com.github.ros.roxanne_sa.platform.rosbridge.RoxanneTokenExecutionPublisher" />
+			
+		<feedback-topic 
+			name="/roxanne/acting/feedback" 
+			msg="roxanne_rosjava_msgs/TokenExecutionFeedback" 
+			delegate="com.github.roxanne_sa.platform.rosbridge.RoxanneTokenExecutionFeedbackListener" />
+			
+	</command>
+
+</ros>

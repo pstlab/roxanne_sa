@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.github.ros.roxanne_sa.ai.executive.pdb.ExecutionNode;
 import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
 import com.github.ros.roxanne_sa.control.lang.PlatformFeedback;
+import com.github.ros.roxanne_sa.control.lang.PlatformMessage;
 import com.github.ros.roxanne_sa.control.lang.PlatformObservation;
 import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
 
@@ -21,11 +22,11 @@ import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
 public abstract class PlatformProxy 
 {
 	protected static final AtomicInteger OBS_COUNTER = new AtomicInteger(0);
-	protected static final AtomicInteger CMD_COUNTER = new AtomicInteger(0);
+	protected static final AtomicInteger cmdIdCounter = new AtomicInteger(0);
 	
 	protected final List<PlatformObserver> observers;							// list of platform observers
 	
-	protected Map<String, PlatformCommand> dispatchedIndex;	// index of dispatched commands by command ID
+	protected Map<Long, PlatformCommand> dispatchedIndex;				// index of dispatched commands by command ID
 	
 	/**
 	 * 
@@ -84,7 +85,7 @@ public abstract class PlatformProxy
 	 * @param cmdId
 	 * @return
 	 */
-	public synchronized PlatformCommand getDispatchedCommand(String cmdId) {
+	public synchronized PlatformCommand getDispatchedCommand(long cmdId) {
 		// get command from cache
 		return this.dispatchedIndex.get(cmdId);
 	}
@@ -181,6 +182,23 @@ public abstract class PlatformProxy
 				observer.feedback(feedback);
 				
 			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param msg
+	 */
+	public void notify(PlatformMessage msg)
+	{
+		// check message internal types
+		if (msg instanceof PlatformFeedback) {
+			// handle execution feedback
+			this.notify((PlatformFeedback) msg);
+		}
+		else {
+			// handle observation
+			this.notify((PlatformObservation<?>) msg);
 		}
 	}
 	

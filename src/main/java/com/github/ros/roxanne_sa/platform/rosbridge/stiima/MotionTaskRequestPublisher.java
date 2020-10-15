@@ -3,8 +3,8 @@ package com.github.ros.roxanne_sa.platform.rosbridge.stiima;
 import com.github.ros.roxanne_sa.ai.executive.pdb.ExecutionNode;
 import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
 import com.github.ros.roxanne_sa.platform.PlatformProxy;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSBridgePlatformProxy;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSPublisher;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicPublisher;
 import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionRequest;
 import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionRequestArray;
 
@@ -15,14 +15,14 @@ import ros.Publisher;
  * @author alessandroumbrico
  *
  */
-public class MotionTaskRequestPublisher extends ROSPublisher<MotionTaskExecutionRequestArray> 
+public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTaskExecutionRequestArray> 
 {
 	/**
 	 * 
 	 * @param proxy
 	 * @param publisher
 	 */
-	protected MotionTaskRequestPublisher(ROSBridgePlatformProxy proxy, Publisher publisher) {
+	protected MotionTaskRequestPublisher(RosBridgePlatformProxy proxy, Publisher publisher) {
 		super(proxy, publisher);
 	}
 	

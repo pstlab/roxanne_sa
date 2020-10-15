@@ -9,9 +9,9 @@ import ros.Publisher;
  * @author alessandroumbrico
  *
  */
-public abstract class ROSPublisher<T extends Object> 
+public abstract class RosBridgeTopicPublisher<T extends Object> extends RosBridgeTopicHandler
 {
-	protected ROSBridgePlatformProxy proxy;
+	protected RosBridgePlatformProxy proxy;
 	protected Publisher publisher;
 	
 	/**
@@ -19,7 +19,7 @@ public abstract class ROSPublisher<T extends Object>
 	 * @param proxy
 	 * @param publisher
 	 */
-	protected ROSPublisher(ROSBridgePlatformProxy proxy, Publisher publisher) {
+	protected RosBridgeTopicPublisher(RosBridgePlatformProxy proxy, Publisher publisher) {
 		this.proxy = proxy;
 		this.publisher = publisher;
 	}
@@ -34,9 +34,8 @@ public abstract class ROSPublisher<T extends Object>
 		System.out.println(">>>> Publishing msg:\n\t- cmd: " + cmd+ "\n\t- topic: " + this.publisher.getTopic() + "\n\t- msg: " + msg + "\n");
 		// publish message
 		this.publisher.publish(msg);
-		
 	}
-
+	
 	/**
 	 * 
 	 * @param cmd

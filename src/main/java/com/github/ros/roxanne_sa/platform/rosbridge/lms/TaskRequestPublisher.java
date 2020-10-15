@@ -1,9 +1,9 @@
 package com.github.ros.roxanne_sa.platform.rosbridge.lms;
 
 import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSBridgePlatformProxy;
-import com.github.ros.roxanne_sa.platform.rosbridge.ROSPublisher;
-import com.github.ros.roxanne_sa.platform.rosbridge.roxanne.msgs.TaskExecutionRequest;
+import com.github.ros.roxanne_sa.platform.msgs.TokenExecution;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
+import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicPublisher;
 
 import ros.Publisher;
 
@@ -12,7 +12,7 @@ import ros.Publisher;
  * @author alessandroumbrico
  *
  */
-public class TaskRequestPublisher extends ROSPublisher<TaskExecutionRequest> 
+public class TaskRequestPublisher extends RosBridgeTopicPublisher<TokenExecution> 
 {
 	private StaticTaskDescriptionKnowledge knowledge;		// static task knowledge
 	
@@ -21,7 +21,7 @@ public class TaskRequestPublisher extends ROSPublisher<TaskExecutionRequest>
 	 * @param proxy
 	 * @param publisher
 	 */
-	protected TaskRequestPublisher(ROSBridgePlatformProxy proxy, Publisher publisher) {
+	protected TaskRequestPublisher(RosBridgePlatformProxy proxy, Publisher publisher) {
 		super(proxy, publisher);
 		// set static knowledge
 		this.knowledge = new StaticTaskDescriptionKnowledge();
@@ -135,7 +135,7 @@ public class TaskRequestPublisher extends ROSPublisher<TaskExecutionRequest>
 	 * 
 	 */
 	@Override
-	protected TaskExecutionRequest doCreateMessage(PlatformCommand cmd) 
+	protected TokenExecution doCreateMessage(PlatformCommand cmd) 
 	{
 		// set task request parameters
 		String[] params = new String[7];
@@ -156,7 +156,7 @@ public class TaskRequestPublisher extends ROSPublisher<TaskExecutionRequest>
 		params[6] = "Action ID " + cmd.getId();
 		
 		// create task request
-		TaskExecutionRequest request = new TaskExecutionRequest(
+		TokenExecution request = new TokenExecution(
 				cmd.getId(),
 				cmd.getName(),
 				params);

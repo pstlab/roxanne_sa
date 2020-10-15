@@ -33,19 +33,19 @@ import ros.SubscriptionRequestMsg;
  * @author alessandroumbrico
  *
  */
-public class ROSBridgePlatformProxy extends PlatformProxy 
+public class RosBridgePlatformProxy extends PlatformProxy 
 {
 	private RosBridge bridge;								// bridge to ROS
 
 	private Map<String, String> command2dispatchTopic;		// map platform commands to ROS dispatch topics
-	private Map<String, ROSPublisher<?>> topic2publisher;	// map ROS topic to publisher
+	private Map<String, RosBridgeTopicPublisher<?>> topic2publisher;	// map ROS topic to publisher
 	private Set<String> subscribedTopics;					// set of subscribed ROS topics
 	
 	
 	/**
 	 * 
 	 */
-	protected ROSBridgePlatformProxy() 
+	protected RosBridgePlatformProxy() 
 	{
 		super();
 		// set bridge
@@ -70,7 +70,7 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		{
 			// set observation counter
 			OBS_COUNTER.set(0);
-			CMD_COUNTER.set(0);
+			cmdIdCounter.set(0);
 			
 			// clear data structures
 			this.command2dispatchTopic.clear();
@@ -105,6 +105,8 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 						rosHost.getValue().trim(),
 						true);
 
+				
+				
 				// get environment topics
 				expression = xp.compile("//environment-topic");
 				elements = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
@@ -127,8 +129,8 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 						System.out.println("... subscribing to topic " + topicName.getValue().trim().toLowerCase() + " ...");
 						
 						// create observation listener
-						Class<? extends ROSObservationListener<?>> clazz = (Class<? extends ROSObservationListener<?>>) Class.forName(delegateClass.getValue().trim());
-						Constructor<? extends ROSObservationListener<?>> c = clazz.getDeclaredConstructor(ROSBridgePlatformProxy.class);
+						Class<? extends RosBridgeTopicListener<?>> clazz = (Class<? extends RosBridgeTopicListener<?>>) Class.forName(delegateClass.getValue().trim());
+						Constructor<? extends RosBridgeTopicListener<?>> c = clazz.getDeclaredConstructor(RosBridgePlatformProxy.class);
 						c.setAccessible(true);
 						
 						// subscribe to topic
@@ -176,12 +178,12 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 					if (!this.topic2publisher.containsKey(dispatchTopicName.getValue().trim().toLowerCase())) 
 					{
 						// create publisher instance
-						Class<? extends ROSPublisher<?>> clazz = (Class<? extends ROSPublisher<?>>) Class.forName(publisherClass.getValue().trim());
-						Constructor<? extends ROSPublisher<?>> c = clazz.getDeclaredConstructor(ROSBridgePlatformProxy.class, Publisher.class);
+						Class<? extends RosBridgeTopicPublisher<?>> clazz = (Class<? extends RosBridgeTopicPublisher<?>>) Class.forName(publisherClass.getValue().trim());
+						Constructor<? extends RosBridgeTopicPublisher<?>> c = clazz.getDeclaredConstructor(RosBridgePlatformProxy.class, Publisher.class);
 						c.setAccessible(true);
 						
 						// create ROS publisher
-						ROSPublisher<?> publisher = c.newInstance(
+						RosBridgeTopicPublisher<?> publisher = c.newInstance(
 								this, 
 								new Publisher(dispatchTopicName.getValue().trim(),
 										dispatchMessageType.getValue().trim(),
@@ -215,8 +217,8 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 						
 						
 						// create feedback listener
-						Class<? extends ROSFeedbackListener> clazz = (Class<? extends ROSFeedbackListener>) Class.forName(delegateClass.getValue().trim());
-						Constructor<? extends ROSFeedbackListener> c = clazz.getDeclaredConstructor(ROSBridgePlatformProxy.class);
+						Class<? extends RosBridgeTopicListener<?>> clazz = (Class<? extends RosBridgeTopicListener<?>>) Class.forName(delegateClass.getValue().trim());
+						Constructor<? extends RosBridgeTopicListener<?>> c = clazz.getDeclaredConstructor(RosBridgePlatformProxy.class);
 						c.setAccessible(true);
 						
 						// subscribe to topic
@@ -252,11 +254,18 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		// check component name
 		String compName = node.getComponent();
 		
+		// check if there is a specific dispatching topic for this node 
+		boolean toDispatch = this.command2dispatchTopic.containsKey(
+				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
 		
-		// check starting name 
-		return this.command2dispatchTopic.containsKey(
-				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase()
-			);
+		// check if there is a default dispatching command
+		if (!toDispatch) {
+			// check default 
+			toDispatch = this.command2dispatchTopic.containsKey("*.*");
+		}
+		
+		// get flag
+		return toDispatch;
 	}
 
 	
@@ -277,14 +286,15 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		String compName = node.getComponent();
 
 		// create platform command
-		PlatformCommand cmd = new PlatformCommand("CMD" + CMD_COUNTER.getAndIncrement(), node);
+		PlatformCommand cmd = new PlatformCommand(
+				cmdIdCounter.getAndIncrement(), node, 1);
 		
 		// get dispatching topic
 		String topic = this.command2dispatchTopic.get(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
 		
 		// get publisher
-		ROSPublisher<?> publisher = this.topic2publisher.get(topic);
+		RosBridgeTopicPublisher<?> publisher = this.topic2publisher.get(topic);
 		// publish execution request
 		publisher.publish(cmd);
 		
@@ -311,16 +321,18 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		String cmdName = PlatformProxy.extractCommandName(node);
 		String compName = node.getComponent();
 		// create platform command 
-		PlatformCommand cmd = new PlatformCommand("CMD" + CMD_COUNTER.getAndIncrement(), node);
+		PlatformCommand cmd = new PlatformCommand(
+				cmdIdCounter.getAndIncrement(), node, 1);
 		
 		// get dispatcher topic 
 		String topic = this.command2dispatchTopic.get(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
 		
 		// get publisher
-		ROSPublisher<?> publisher = this.topic2publisher.get(topic);
+		RosBridgeTopicPublisher<?> publisher = this.topic2publisher.get(topic);
 		// publish start command
 		publisher.publish(cmd);
+		
 		// add command to dispatched index
 		this.dispatchedIndex.put(cmd.getId(), cmd);
 		// get create command
@@ -343,7 +355,8 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		String cmdName = PlatformProxy.extractCommandName(node);
 		String compName = node.getComponent();
 		// create platform command 
-		PlatformCommand cmd = new PlatformCommand("CMD" + CMD_COUNTER.getAndIncrement(), node);
+		PlatformCommand cmd = new PlatformCommand(
+				cmdIdCounter.getAndIncrement(), node, 0);
 		
 		// get dispatcher topic 
 		String topic = this.command2dispatchTopic.get(
@@ -351,7 +364,7 @@ public class ROSBridgePlatformProxy extends PlatformProxy
 		
 		
 		// get publisher
-		ROSPublisher<?> publisher = this.topic2publisher.get(topic);
+		RosBridgeTopicPublisher<?> publisher = this.topic2publisher.get(topic);
 		// publish stop command
 		publisher.publish(cmd);
 		// add command to dispatched index

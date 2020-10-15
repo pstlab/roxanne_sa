@@ -35,11 +35,11 @@ import ros.SubscriptionRequestMsg;
  */
 public class RosBridgePlatformProxy extends PlatformProxy 
 {
-	private RosBridge bridge;								// bridge to ROS
+	private RosBridge bridge;											// bridge to ROS
 
-	private Map<String, String> command2dispatchTopic;		// map platform commands to ROS dispatch topics
+	private Map<String, String> command2dispatchTopic;					// map platform commands to ROS dispatch topics
 	private Map<String, RosBridgeTopicPublisher<?>> topic2publisher;	// map ROS topic to publisher
-	private Set<String> subscribedTopics;					// set of subscribed ROS topics
+	private Set<String> subscribedTopics;								// set of subscribed ROS topics
 	
 	
 	/**

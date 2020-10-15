@@ -15,7 +15,7 @@ import ros.tools.MessageUnpacker;
  * @author alessandroumbrico
  *
  */
-public class MotionTaskFeedbackListener extends RosBridgeTopicListener 
+public class MotionTaskFeedbackListener extends RosBridgeTopicListener<PlatformFeedback> 
 {
 	/**
 	 * 
@@ -34,7 +34,9 @@ public class MotionTaskFeedbackListener extends RosBridgeTopicListener
 			throws PlatformCommunicationException 
 	{
 		// get message unpacker
-		MessageUnpacker<MotionTaskExecutionFeedback> unpacker = new MessageUnpacker<MotionTaskExecutionFeedback>(MotionTaskExecutionFeedback.class);
+		MessageUnpacker<MotionTaskExecutionFeedback> unpacker = 
+				new MessageUnpacker<MotionTaskExecutionFeedback>(MotionTaskExecutionFeedback.class);
+		// unpack message context according to the expected format
 		MotionTaskExecutionFeedback content = unpacker.unpackRosMessage(data);
 		
 		// retrieve issuing command
@@ -44,8 +46,9 @@ public class MotionTaskFeedbackListener extends RosBridgeTopicListener
 			throw new PlatformCommunicationException("Received feedback concerning a non-dispatched command:\n\t- cmdId: " + content.cmd_id);
 		}
 		
-		// create action feedback
-		PlatformFeedback feedback = new PlatformFeedback(cmd, content.getResult());
+		// create robot action feedback
+		PlatformFeedback feedback = new PlatformFeedback(
+				msgIdCounter.getAndIncrement(), cmd, content.getResult());
 		// get action feedback
 		return feedback;
 	}

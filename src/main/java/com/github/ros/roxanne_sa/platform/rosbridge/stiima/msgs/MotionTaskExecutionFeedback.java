@@ -16,7 +16,7 @@ public class MotionTaskExecutionFeedback
 			PlatformFeedbackType.SUCCESS
 	};
 	
-	public String cmd_id;					// ID of the command a feedback refers to
+	public long cmd_id;						// ID of the command a feedback refers to
 	public int result;						// an integer representing the result of an operation
 	
 	
@@ -27,7 +27,7 @@ public class MotionTaskExecutionFeedback
 	 * @param cmdId
 	 * @param result
 	 */
-	public MotionTaskExecutionFeedback(String cmdId, int result) {
+	public MotionTaskExecutionFeedback(long cmdId, int result) {
 		this.cmd_id = cmdId;
 		this.result = result;
 	}
@@ -40,15 +40,20 @@ public class MotionTaskExecutionFeedback
 		return RESULTS[this.result];
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cmd_id == null) ? 0 : cmd_id.hashCode());
-		result = prime * result + this.result;
+		result = prime * result + (int) (cmd_id ^ (cmd_id >>> 32));
 		return result;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -58,21 +63,17 @@ public class MotionTaskExecutionFeedback
 		if (getClass() != obj.getClass())
 			return false;
 		MotionTaskExecutionFeedback other = (MotionTaskExecutionFeedback) obj;
-		if (cmd_id == null) {
-			if (other.cmd_id != null)
-				return false;
-		} else if (!cmd_id.equals(other.cmd_id))
-			return false;
-		if (result != other.result)
+		if (cmd_id != other.cmd_id)
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 */
 	@Override
 	public String toString() {
-		return "[MotionTaskExecutionResult cmd_id : " + this.cmd_id + ", result : " +  this.getResult() + "]";
+		// JSON style description
+		return "{ \"cmd_id\": " + this.cmd_id + ", \"result\": " +  this.getResult() + "}";
 	}
 }

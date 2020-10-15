@@ -44,6 +44,7 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 		{
 			// set the current requested task
 			tasks[0] = new MotionTaskExecutionRequest(
+					(cmd.getName() + cmd.getParamValues()[1]).toLowerCase(),
 					cmd.getName(),
 					cmd.getParamValues()[0],
 					cmd.getParamValues()[1],
@@ -54,9 +55,11 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 							// TODO : vector of expected simultaneous human tasks
 					});
 		}
-		else {
+		else 
+		{
 			// set the current requested task
 			tasks[0] = new MotionTaskExecutionRequest(
+					(cmd.getName() + cmd.getParamValues()[1]).toLowerCase(),
 					cmd.getName(),
 					"box_blue",
 					cmd.getName().substring(cmd.getName().length() - 2, cmd.getName().length()),
@@ -89,6 +92,7 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 			{
 				// set next requested task
 				tasks[1] = new MotionTaskExecutionRequest(
+						(name + params[1]).toLowerCase(),
 						name,
 						params[0],
 						params[1],
@@ -101,6 +105,7 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 			else {
 				// set next requested task
 				tasks[1] = new MotionTaskExecutionRequest(
+						(name + cmd.getName().substring(cmd.getName().length() - 2, cmd.getName().length())).toLowerCase(),
 						name,
 						"box_blue",
 						cmd.getName().substring(cmd.getName().length() - 2, cmd.getName().length()),
@@ -130,6 +135,7 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 				{
 					// set next requested task
 					tasks[2] = new MotionTaskExecutionRequest(
+							(name + params[1]).toLowerCase(), 
 							name,
 							params[0],
 							params[1],
@@ -143,6 +149,7 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 				{
 					// set next requested task
 					tasks[2] = new MotionTaskExecutionRequest(
+							(name + cmd.getName().substring(cmd.getName().length() - 2, cmd.getName().length())).toLowerCase(),
 							name,
 							"box_blue",
 							cmd.getName().substring(cmd.getName().length() - 2, cmd.getName().length()),
@@ -155,13 +162,13 @@ public class MotionTaskRequestPublisher extends RosBridgeTopicPublisher<MotionTa
 			}
 			else {
 				// set empty object
-				tasks[2] = new MotionTaskExecutionRequest();
+				tasks[2] = new MotionTaskExecutionRequest("empty");
 			}
 		}		
 		else {
 			// set empty objects
-			tasks[1] = new MotionTaskExecutionRequest();
-			tasks[2] = new MotionTaskExecutionRequest();
+			tasks[1] = new MotionTaskExecutionRequest("empty");
+			tasks[2] = new MotionTaskExecutionRequest("empty");
 		}
 		
 		// set request tasks

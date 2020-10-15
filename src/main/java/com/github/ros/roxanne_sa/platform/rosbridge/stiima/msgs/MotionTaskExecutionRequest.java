@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class MotionTaskExecutionRequest 
 {
+	public String cmd_id;				// id of the command
 	public String cmd_name;				// name of the command
 	public String cfg_start;			// starting motion configuration
 	public String cfg_goal;				// goal motion configuration
@@ -18,8 +19,10 @@ public class MotionTaskExecutionRequest
 	
 	/**
 	 * 
+	 * @param cmd_id
 	 */
-	public MotionTaskExecutionRequest() {
+	public MotionTaskExecutionRequest(String cmd_id) {
+		this.cmd_id = cmd_id;
 		this.cmd_name = "";
 		this.cfg_start = "";
 		this.cfg_goal = "";
@@ -30,6 +33,7 @@ public class MotionTaskExecutionRequest
 	
 	/**
 	 * 
+	 * @param cmd_id
 	 * @param name
 	 * @param cfgStart
 	 * @param cfgGoal
@@ -37,7 +41,8 @@ public class MotionTaskExecutionRequest
 	 * @param duration
 	 * @param humanTasks
 	 */
-	public MotionTaskExecutionRequest(String name, String cfgStart, String cfgGoal, float risk, float duration, String[] humanTasks) {
+	public MotionTaskExecutionRequest(String cmd_id, String name, String cfgStart, String cfgGoal, float risk, float duration, String[] humanTasks) {
+		this.cmd_id = cmd_id;
 		this.cmd_name = name;
 		this.cfg_start = cfgStart;
 		this.cfg_goal = cfgGoal;
@@ -98,6 +103,7 @@ public class MotionTaskExecutionRequest
 
 	@Override
 	public String toString() {
-		return "[MotionTaskExecutionRequest name : " + this.cmd_name + ", start : " + this.cfg_start + ", goal : " + this.cfg_goal + ", risk : " + this.risk_level + "]";
+		// JSON style description
+		return "{\"id\": \"" + cmd_id +"\", \"name\": \"" + this.cmd_name + "\", \"start\": \"" + this.cfg_start + "\", \"goal\": \"" + this.cfg_goal + "\", \"risk\": " + this.risk_level + "}";
 	}
 }

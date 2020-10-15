@@ -21,7 +21,8 @@ public class TaskRequestPublisher extends RosBridgeTopicPublisher<TokenExecution
 	 * @param proxy
 	 * @param publisher
 	 */
-	protected TaskRequestPublisher(RosBridgePlatformProxy proxy, Publisher publisher) {
+	protected TaskRequestPublisher(RosBridgePlatformProxy proxy, Publisher publisher) 
+	{
 		super(proxy, publisher);
 		// set static knowledge
 		this.knowledge = new StaticTaskDescriptionKnowledge();
@@ -156,12 +157,15 @@ public class TaskRequestPublisher extends RosBridgeTopicPublisher<TokenExecution
 		params[6] = "Action ID " + cmd.getId();
 		
 		// create task request
-		TokenExecution request = new TokenExecution(
-				cmd.getId(),
-				cmd.getName(),
-				params);
+//		TokenExecution request = new TokenExecution(
+//				cmd.getId(),
+//				cmd.getName(),
+//				params);
+//		
+//		// get request
+//		return request;
 		
-		// get request
-		return request;
+		// TODO : TO CHECK WITH UPDATED MESSAGES
+		return null;
 	}
 }

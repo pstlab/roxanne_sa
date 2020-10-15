@@ -7,7 +7,7 @@ package com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs;
  */
 public class MotionTaskExecutionRequestArray 
 {
-	public String cmd_id;							// ID of the command
+	public long cmd_id;							// ID of the command
 	public MotionTaskExecutionRequest[] tasks;		// tasks to execute
 	
 	/**
@@ -19,11 +19,10 @@ public class MotionTaskExecutionRequestArray
 	 * 
 	 * @param cmdId
 	 */
-	public MotionTaskExecutionRequestArray(String cmdId) {
+	public MotionTaskExecutionRequestArray(long cmdId) {
 		this.cmd_id = cmdId;
 	}
 
-	
 	/**
 	 * 
 	 */
@@ -31,7 +30,7 @@ public class MotionTaskExecutionRequestArray
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cmd_id == null) ? 0 : cmd_id.hashCode());
+		result = prime * result + (int) (cmd_id ^ (cmd_id >>> 32));
 		return result;
 	}
 
@@ -47,10 +46,7 @@ public class MotionTaskExecutionRequestArray
 		if (getClass() != obj.getClass())
 			return false;
 		MotionTaskExecutionRequestArray other = (MotionTaskExecutionRequestArray) obj;
-		if (cmd_id == null) {
-			if (other.cmd_id != null)
-				return false;
-		} else if (!cmd_id.equals(other.cmd_id))
+		if (cmd_id != other.cmd_id)
 			return false;
 		return true;
 	}
@@ -60,6 +56,7 @@ public class MotionTaskExecutionRequestArray
 	 */
 	@Override
 	public String toString() {
-		return "[MotionTaskExecutionRequestArray cmdId : " + this.cmd_id + ", tasks : {current : " + this.tasks[0] + ", next-1 : " + this.tasks[1] + ", next-2 : " + this.tasks[2] + "}]";
+		// JSON style description
+		return "{ \"cmdId\": " + this.cmd_id + ", \"tasks\": [\"current\" : " + this.tasks[0] + ", \"next-1\" : " + this.tasks[1] + ", \"next-2\" : " + this.tasks[2] + "]}";
 	}
 }

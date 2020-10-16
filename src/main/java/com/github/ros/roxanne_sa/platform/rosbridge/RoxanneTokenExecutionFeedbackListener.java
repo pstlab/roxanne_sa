@@ -30,7 +30,6 @@ public class RoxanneTokenExecutionFeedbackListener extends RosBridgeTopicListene
 	protected PlatformFeedback doHandleMessage(JsonNode data, String stringRep) 
 			throws PlatformCommunicationException 
 	{
-		
 		// get message unpacker
 		MessageUnpacker<TokenExecutionFeedback> unpacker = 
 				new MessageUnpacker<TokenExecutionFeedback>(TokenExecutionFeedback.class);

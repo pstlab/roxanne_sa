@@ -36,6 +36,10 @@ import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
  */
 public class GoalOrientedActingAgent
 {
+	// set framework home
+	protected static final String FRAMEWORK_HOME = System.getenv("ROXANNE_HOME") != null ?
+			System.getenv("ROXANNE_HOME") + "/" : "";
+	
 	private final Object lock;								// lock state;
 	private ActingAgentStatus status;						// agent status
 
@@ -81,7 +85,8 @@ public class GoalOrientedActingAgent
 			this.processes = null;
 			
 			// get default agent property file
-			this.properties = new FilePropertyReader(FilePropertyReader.DEFAULT_AGENT_PROPERTY);
+			this.properties = new FilePropertyReader(
+					FRAMEWORK_HOME + FilePropertyReader.DEFAULT_AGENT_PROPERTY);
 			
 			// get DDL file 
 			String ddlFile = this.properties.getProperty("model");
@@ -298,7 +303,8 @@ public class GoalOrientedActingAgent
 	{
 		// wait some finished or aborted goal
 		List<Goal> goals = new ArrayList<>();
-		synchronized (this.queue) {
+		synchronized (this.queue) 
+		{
 			while (this.queue.get(GoalStatus.ABORTED).isEmpty() && 
 					this.queue.get(GoalStatus.FINISHED).isEmpty()) {
 				// wait
@@ -468,10 +474,6 @@ public class GoalOrientedActingAgent
 			p.join();
 		}
 		
-		/*
-		 * TODO : close platform PROXY
-		 */
-
 		synchronized (this.lock) {
 			// change status
 			this.status = ActingAgentStatus.OFFLINE;

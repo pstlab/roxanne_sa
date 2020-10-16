@@ -258,7 +258,13 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		boolean toDispatch = this.command2dispatchTopic.containsKey(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
 		
-		// check if there is a default dispatching command
+		// check if there is a default dispatching command for the component
+		if (!toDispatch) {
+			// check component default dispatching command
+			toDispatch = this.command2dispatchTopic.containsKey(compName.trim().toLowerCase() + ".*");
+		}
+		
+		// check if there is a default dispatching command 
 		if (!toDispatch) {
 			// check default 
 			toDispatch = this.command2dispatchTopic.containsKey("*.*");
@@ -292,6 +298,19 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		// get dispatching topic
 		String topic = this.command2dispatchTopic.get(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
+		
+		// check default dispatching topic of the component
+		if (topic == null) {
+			// get default dispatching topic of the component (if any)
+			topic = this.command2dispatchTopic.get(
+					compName.trim().toLowerCase() + ".*");
+		}
+		
+		// check default dispatching topic
+		if (topic == null) {
+			// get default dispatching topic
+			topic = this.command2dispatchTopic.get("*.*");
+		}
 		
 		// get publisher
 		RosBridgeTopicPublisher<?> publisher = this.topic2publisher.get(topic);
@@ -328,6 +347,19 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		String topic = this.command2dispatchTopic.get(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
 		
+		// check default dispatching topic of the component
+		if (topic == null) {
+			// get default dispatching topic of the component (if any)
+			topic = this.command2dispatchTopic.get(
+					compName.trim().toLowerCase() + ".*");
+		}
+		
+		// check default dispatching topic
+		if (topic == null) {
+			// get default dispatching topic
+			topic = this.command2dispatchTopic.get("*.*");
+		}
+		
 		// get publisher
 		RosBridgeTopicPublisher<?> publisher = this.topic2publisher.get(topic);
 		// publish start command
@@ -361,6 +393,19 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		// get dispatcher topic 
 		String topic = this.command2dispatchTopic.get(
 				compName.trim().toLowerCase() + "." + cmdName.trim().toLowerCase());
+		
+		// check default dispatching topic of the component
+		if (topic == null) {
+			// get default dispatching topic of the component (if any)
+			topic = this.command2dispatchTopic.get(
+					compName.trim().toLowerCase() + ".*");
+		}
+		
+		// check default dispatching topic
+		if (topic == null) {
+			// get default dispatching topic
+			topic = this.command2dispatchTopic.get("*.*");
+		}
 		
 		
 		// get publisher

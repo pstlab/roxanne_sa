@@ -37,7 +37,8 @@ public final class TimelineSchedulingResolver extends Resolver<StateVariable>
 				ResolverType.TIMELINE_SCHEDULING_RESOLVER.getFlawTypes());
 		
 		// get deliberative property file
-		FilePropertyReader properties = new FilePropertyReader(FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
+		FilePropertyReader properties = new FilePropertyReader(
+				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
 		this.schedulingCost = Double.parseDouble(properties.getProperty("scheduling-cost"));
 	}
 	

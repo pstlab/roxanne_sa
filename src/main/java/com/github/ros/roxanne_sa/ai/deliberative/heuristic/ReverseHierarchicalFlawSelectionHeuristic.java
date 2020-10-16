@@ -41,7 +41,8 @@ public class ReverseHierarchicalFlawSelectionHeuristic extends FlawSelectionHeur
 	protected void init() 
 	{
 		// get deliberative property file
-		FilePropertyReader properties = new FilePropertyReader(FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
+		FilePropertyReader properties = new FilePropertyReader(
+				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
 		// get preference property
 		String[] prefs = properties.getProperty("preferences").trim().split(",");
 		// set prefernces

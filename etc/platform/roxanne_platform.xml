@@ -5,7 +5,7 @@
 	<goal-topic 
 		name="/roxanne/acting/task"
 		msg="roxanne_rosjava_msgs/ActingGoal"
-		delegate="com.github.ros.roxanne_sa.platform.rosbridge.ActingGoalListener" />
+		delegate="com.github.ros.roxanne_sa.control.acting.rosbridge.RoxanneActingGoalListener" />
 
 	<environment-topic 
 		name="/roxanne/acting/observation" 
@@ -14,7 +14,7 @@
 
 	<!-- wildcard matching any type of dispatchable token of a plan -->
 	
-	<command name="*" component="*">
+	<command component="*" name="*">
 	
 		<dispatch-topic 
 			name="/roxanne/acting/dispatching" 

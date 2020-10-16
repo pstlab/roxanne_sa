@@ -47,7 +47,8 @@ public class DiscreteResourceSchedulingResolver extends Resolver<DiscreteResourc
 		
 		
 		// get deliberative property file
-		FilePropertyReader properties = new FilePropertyReader(FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
+		FilePropertyReader properties = new FilePropertyReader(
+				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
 		this.cost = Double.parseDouble(properties.getProperty("scheduling-cost"));
 	}
 	

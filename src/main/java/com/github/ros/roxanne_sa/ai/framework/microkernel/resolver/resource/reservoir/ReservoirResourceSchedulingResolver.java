@@ -59,7 +59,8 @@ public class ReservoirResourceSchedulingResolver extends Resolver<ReservoirResou
 				ResolverType.RESERVOIR_RESOURCE_SCHEDULING_RESOLVER.getFlawTypes());
 		
 		// get deliberative property file
-		FilePropertyReader properties = new FilePropertyReader(FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
+		FilePropertyReader properties = new FilePropertyReader(
+				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
 		this.schedulingCost = Double.parseDouble(properties.getProperty("scheduling-cost"));
 		this.planningCost = Double.parseDouble(properties.getProperty("expansion-cost"));
 		this.unificationCost = Double.parseDouble(properties.getProperty("unification-cost"));

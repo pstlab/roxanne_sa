@@ -18,7 +18,7 @@ public class TokenExecutionFeedback
 			
 	};
 	
-	private long cmdId;					// id of the dispatched command the feedback refers to
+	private long tokenId;					// id of the dispatched command the feedback refers to
 	private int code;					// a code about the result: {0 - successful execution, 1 - execution failure}
 	
 	/**
@@ -34,7 +34,7 @@ public class TokenExecutionFeedback
 	 * @param code
 	 */
 	public TokenExecutionFeedback(long cmdId, int code) {
-		this.cmdId = cmdId;
+		this.tokenId = cmdId;
 		this.code = code;		// set result code
 	}
 	
@@ -42,16 +42,16 @@ public class TokenExecutionFeedback
 	 * 
 	 * @return
 	 */
-	public long getCmdId() {
-		return cmdId;
+	public long getTokenId() {
+		return tokenId;
 	}
 
 	/**
 	 * 
 	 * @param cmdId
 	 */
-	public void setCmdId(long cmdId) {
-		this.cmdId = cmdId;
+	public void setTokenId(long cmdId) {
+		this.tokenId = cmdId;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class TokenExecutionFeedback
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (cmdId ^ (cmdId >>> 32));
+		result = prime * result + (int) (tokenId ^ (tokenId >>> 32));
 		return result;
 	}
 
@@ -102,7 +102,7 @@ public class TokenExecutionFeedback
 		if (getClass() != obj.getClass())
 			return false;
 		TokenExecutionFeedback other = (TokenExecutionFeedback) obj;
-		if (cmdId != other.cmdId)
+		if (tokenId != other.tokenId)
 			return false;
 		return true;
 	}
@@ -113,6 +113,6 @@ public class TokenExecutionFeedback
 	@Override
 	public String toString() {
 		// JSON style description
-		return "{\"id\" : " + this.cmdId + ", \"code\": " + this.code + "}";
+		return "{\"id\" : " + this.tokenId + ", \"code\": " + this.code + "}";
 	}
 }

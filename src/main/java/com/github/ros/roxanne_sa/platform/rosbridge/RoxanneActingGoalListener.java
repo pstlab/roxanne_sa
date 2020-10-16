@@ -46,8 +46,8 @@ public class RoxanneActingGoalListener extends RosBridgeGoalListener
 			// create token description 
 			TokenDescription fact = new TokenDescription(
 					t.getComponent(), 
-					t.getPredicate(), 
-					t.getParameters(), 	// TODO : check distinction between labels and assigned values
+					t.getPredicate(),
+					new String[] {}, 	// TODO : add parameter specification and related binding constrains
 					t.getStart(), 
 					t.getEnd(), 
 					t.getDuration());
@@ -63,7 +63,7 @@ public class RoxanneActingGoalListener extends RosBridgeGoalListener
 			TokenDescription g = new TokenDescription(
 					t.getComponent(), 
 					t.getPredicate(),
-					t.getParameters(),	// TODO : check distinction between labels and assigned values
+					new String[] {},	// TODO : add parameter specification and related biding constraints
 					t.getStart(),
 					t.getEnd(),
 					t.getDuration());

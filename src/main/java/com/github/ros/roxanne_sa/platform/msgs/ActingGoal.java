@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class ActingGoal 
 {
-	private long id;
+	private long goalId;
 	private Token[] goals;			// set of tasks to perform
 	private Token[] facts;			// set of known facts about the current state of the environment
 	
@@ -27,7 +27,7 @@ public class ActingGoal
 	 * @param facts
 	 */
 	public ActingGoal(long id, Token[] goals, Token[] facts) {
-		this.id = id;
+		this.goalId = id;
 		this.goals = goals;
 		this.facts = facts;
 	}
@@ -36,16 +36,16 @@ public class ActingGoal
 	 * 
 	 * @return
 	 */
-	public long getId() {
-		return id;
+	public long getGoalId() {
+		return goalId;
 	}
 
 	/**
 	 * 
 	 * @param id
 	 */
-	public void setId(long id) {
-		this.id = id;
+	public void setGoalId(long id) {
+		this.goalId = id;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class ActingGoal
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (goalId ^ (goalId >>> 32));
 		return result;
 	}
 
@@ -103,7 +103,7 @@ public class ActingGoal
 		if (getClass() != obj.getClass())
 			return false;
 		ActingGoal other = (ActingGoal) obj;
-		if (id != other.id)
+		if (goalId != other.goalId)
 			return false;
 		return true;
 	}
@@ -114,7 +114,7 @@ public class ActingGoal
 	@Override
 	public String toString() {
 		// JSON style description
-		return "{\"id\": " + this.id + ", \"goals\": " + Arrays.toString(this.goals) +", \"facts\": " + Arrays.toString(this.facts) + "}";
+		return "{\"goalId\": " + this.goalId + ", \"goals\": " + Arrays.toString(this.goals) +", \"facts\": " + Arrays.toString(this.facts) + "}";
 	}
 	
 }

@@ -86,9 +86,12 @@ public class RosBridgeActingAgent implements Runnable
 			
 			
 			// connect to rosbridge server and start waiting for task requests
-			System.out.println("... connecting to RosBridge server...");
+			System.out.println("... setup goal-level connection to RosBridge server...");
+			// get platform configuration file 
+			FilePropertyReader preader = new FilePropertyReader(this.aPropFile);
+			String platformFile = preader.getProperty("platform_config_file");
 			// setup rosbridge client
-			bridge = this.setupRosBridgeClient(this.aPropFile, agent);
+			bridge = this.setupRosBridgeClient(platformFile, agent);
 			
 			
 			// run until explicitly interrupted

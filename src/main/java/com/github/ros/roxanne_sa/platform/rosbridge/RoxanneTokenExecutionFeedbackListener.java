@@ -37,10 +37,10 @@ public class RoxanneTokenExecutionFeedbackListener extends RosBridgeTopicListene
 		TokenExecutionFeedback content = unpacker.unpackRosMessage(data);
 		
 		// retrieve issuing command
-		PlatformCommand cmd = this.proxy.getDispatchedCommand(content.getCmdId());
+		PlatformCommand cmd = this.proxy.getDispatchedCommand(content.getTokenId());
 		// check command
 		if (cmd == null) {
-			throw new PlatformCommunicationException("Received feedback about a non-dispatched command:\n\t- cmdId: " + content.getCmdId());
+			throw new PlatformCommunicationException("Received feedback about a non-dispatched command:\n\t- cmdId: " + content.getTokenId());
 		}
 		
 		// create platform feedback

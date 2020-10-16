@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ros host="ws://192.168.1.7:9090">
+<ros host="ws://192.168.1.2:9090">
 
 	<goal-topic 
 		name="/roxanne/acting/task"
 		msg="roxanne_rosjava_msgs/ActingGoal"
-		delegate="com.github.ros.roxanne_sa.control.acting.rosbridge.RoxanneActingGoalListener" />
+		delegate="com.github.ros.roxanne_sa.platform.rosbridge.RoxanneActingGoalListener" />
 
 	<environment-topic 
 		name="/roxanne/acting/observation" 
@@ -24,7 +24,7 @@
 		<feedback-topic 
 			name="/roxanne/acting/feedback" 
 			msg="roxanne_rosjava_msgs/TokenExecutionFeedback" 
-			delegate="com.github.roxanne_sa.platform.rosbridge.RoxanneTokenExecutionFeedbackListener" />
+			delegate="com.github.ros.roxanne_sa.platform.rosbridge.RoxanneTokenExecutionFeedbackListener" />
 			
 	</command>
 

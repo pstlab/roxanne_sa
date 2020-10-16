@@ -7,7 +7,7 @@ package com.github.ros.roxanne_sa.platform.msgs;
  */
 public class TokenExecution 
 {
-	private long commandId;			// command id
+	private long tokenId;			// command id
 	private int commandType;		// type of command: {0 - stop exedcution, 1 - start execution}
 	private Token token;			// dispatched token
 	
@@ -25,7 +25,7 @@ public class TokenExecution
 	 * @param token
 	 */
 	public TokenExecution(long id, int commandType, Token token) {
-		this.commandId = id;
+		this.tokenId = id;
 		this.commandType = commandType;
 		this.token = token;
 	}
@@ -34,16 +34,16 @@ public class TokenExecution
 	 * 
 	 * @return
 	 */
-	public long getCommandId() {
-		return commandId;
+	public long getTokenId() {
+		return tokenId;
 	}
 
 	/**
 	 * 
 	 * @param commandId
 	 */
-	public void setCommandId(long commandId) {
-		this.commandId = commandId;
+	public void setTokenId(long commandId) {
+		this.tokenId = commandId;
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class TokenExecution
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (commandId ^ (commandId >>> 32));
+		result = prime * result + (int) (tokenId ^ (tokenId >>> 32));
 		return result;
 	}
 
@@ -101,7 +101,7 @@ public class TokenExecution
 		if (getClass() != obj.getClass())
 			return false;
 		TokenExecution other = (TokenExecution) obj;
-		if (commandId != other.commandId)
+		if (tokenId != other.tokenId)
 			return false;
 		return true;
 	}
@@ -112,6 +112,6 @@ public class TokenExecution
 	@Override
 	public String toString() {
 		// JSON style description
-		return "{ \"cmdId\": " +  this.commandId+", \"cmdType\": " + this.commandType +", \"token\": " + this.token + "}";
+		return "{ \"cmdId\": " +  this.tokenId+", \"cmdType\": " + this.commandType +", \"token\": " + this.token + "}";
 	}
 }

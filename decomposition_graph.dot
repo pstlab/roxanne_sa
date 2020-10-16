@@ -1,6 +1,55 @@
 digraph decomposition_graph {
 	rankdir=TB;
 	node [fontsize=11, style=filled, fillcolor=azure, shape = box]
+	AND_0 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	Goal_DoMosaic -> AND_0;
+	AND_0 -> Mosaic_DoRow3 [label= "1"];
+	AND_0 -> Mosaic_DoRow4 [label= "1"];
+	AND_0 -> Mosaic_DoRow5 [label= "1"];
+	AND_0 -> Mosaic_DoRow1 [label= "1"];
+	AND_0 -> Mosaic_DoRow2 [label= "1"];
+	AND_1 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	Mosaic_DoRow3 -> AND_1;
+	AND_1 -> Human__PickPlace [label= "5"];
+	AND_1 -> Robot__PickPlace [label= "5"];
+	AND_2 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	Mosaic_DoRow4 -> AND_2;
+	AND_2 -> Human__PickPlace [label= "6"];
+	AND_2 -> Robot__PickPlace [label= "4"];
+	OR_0 [fontsize=6, shape= diamond, style=filled, fillcolor= thistle];
+	Mosaic_DoRow5 -> OR_0;
+	AND_3 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_0 -> AND_3;
+	AND_3 -> Human__PickPlace [label= "4"];
+	AND_3 -> Robot__PickPlace [label= "6"];
+	AND_4 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_0 -> AND_4;
+	AND_4 -> Human__PickPlace [label= "5"];
+	AND_4 -> Robot__PickPlace [label= "5"];
+	OR_1 [fontsize=6, shape= diamond, style=filled, fillcolor= thistle];
+	Mosaic_DoRow1 -> OR_1;
+	AND_5 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_1 -> AND_5;
+	AND_5 -> Human__PickPlace [label= "4"];
+	AND_5 -> Robot__PickPlace [label= "6"];
+	AND_6 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_1 -> AND_6;
+	AND_6 -> Human__PickPlace [label= "5"];
+	AND_6 -> Robot__PickPlace [label= "5"];
+	OR_2 [fontsize=6, shape= diamond, style=filled, fillcolor= thistle];
+	Mosaic_DoRow2 -> OR_2;
+	AND_7 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_2 -> AND_7;
+	AND_7 -> Human__PickPlace [label= "5"];
+	AND_7 -> Robot__PickPlace [label= "5"];
+	AND_8 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_2 -> AND_8;
+	AND_8 -> Human__PickPlace [label= "6"];
+	AND_8 -> Robot__PickPlace [label= "4"];
+	AND_9 [fontsize=6, shape= oval, style=filled, fillcolor= palegreen];
+	OR_2 -> AND_9;
+	AND_9 -> Human__PickPlace [label= "7"];
+	AND_9 -> Robot__PickPlace [label= "3"];
 
 }
 

@@ -6,7 +6,6 @@ import com.github.ros.roxanne_sa.control.lang.PlatformFeedback;
 import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
 import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
 import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicListener;
-import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionFeedback;
 
 import ros.tools.MessageUnpacker;
 

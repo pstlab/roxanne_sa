@@ -5,8 +5,6 @@ import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
 import com.github.ros.roxanne_sa.platform.PlatformProxy;
 import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgePlatformProxy;
 import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeTopicPublisher;
-import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionRequest;
-import com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs.MotionTaskExecutionRequestArray;
 
 import ros.Publisher;
 

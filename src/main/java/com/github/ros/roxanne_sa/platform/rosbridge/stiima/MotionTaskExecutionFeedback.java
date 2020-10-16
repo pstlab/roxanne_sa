@@ -1,4 +1,4 @@
-package com.github.ros.roxanne_sa.platform.rosbridge.stiima.msgs;
+package com.github.ros.roxanne_sa.platform.rosbridge.stiima;
 
 import com.github.ros.roxanne_sa.control.lang.PlatformFeedbackType;
 

@@ -1,113 +1,338 @@
-horizon = 500
+horizon = 7000
 plan {
 	timelines {
-		PointingMode {
-			token 0  { Earth [1,122] [1, 122] }
-			token 1  { Slewing [2,123] [1, 122] }
-			token 2  { Target [5,126] [3, 124] }
-			token 3  { Slewing [6,127] [1, 122] }
-			token 4  { Target [9,130] [3, 124] }
-			token 5  { Slewing [10,131] [1, 122] }
-			token 6  { Earth [15,136] [5, 126] }
-			token 7  { Slewing [16,137] [1, 122] }
-			token 8  { Target [19,140] [3, 124] }
-			token 9  { Slewing [20,141] [1, 122] }
-			token 10  { Target [23,144] [3, 124] }
-			token 11  { Slewing [24,145] [1, 122] }
-			token 12  { Earth [29,150] [5, 126] }
-			token 13  { Slewing [30,151] [1, 122] }
-			token 14  { Target [33,154] [3, 124] }
-			token 15  { Slewing [34,155] [1, 122] }
-			token 16  { Earth [39,500] [5, 466] }
+		Goal {
+			token 0  { DoMosaic [55,7000] [55, 7000] }
 		}
-		Satellite {
-			token 17  { Science [5,126] [3, 7] }
-			token 18  { Science [9,130] [3, 7] }
-			token 19 uncontrollable { _Communicate [15,136] [5, 8] }
-			token 20 uncontrollable { _Communicate [15,136] [5, 8] }
-			token 21  { Science [19,140] [3, 7] }
-			token 22  { Science [23,144] [3, 7] }
-			token 23 uncontrollable { _Communicate [29,150] [5, 8] }
-			token 24 uncontrollable { _Communicate [29,150] [5, 8] }
-			token 25  { Science [33,154] [3, 7] }
-			token 26 uncontrollable { _Communicate [39,160] [5, 8] }
+		Human {
+			token 1 uncontrollable { _PickPlace-box_blue-H1-3 [1,6950] [1, 120] }
+			token 2  { Idle [2,6951] [1, 6950] }
+			token 3 uncontrollable { _PickPlace-box_white-E1-0 [3,6952] [1, 120] }
+			token 4  { Idle [4,6953] [1, 6950] }
+			token 5 uncontrollable { _PickPlace-box_blue-J1-3 [5,6954] [1, 120] }
+			token 6  { Idle [6,6955] [1, 6950] }
+			token 7 uncontrollable { _PickPlace-box_white-I1-0 [7,6956] [1, 120] }
+			token 8  { Idle [12,6957] [1, 6950] }
+			token 9 uncontrollable { _PickPlace-box_white-G3-0 [13,6958] [1, 120] }
+			token 10  { Idle [14,6959] [1, 6946] }
+			token 11 uncontrollable { _PickPlace-box_white-I3-0 [15,6960] [1, 120] }
+			token 12  { Idle [16,6961] [1, 6946] }
+			token 13 uncontrollable { _PickPlace-box_white-E3-0 [17,6962] [1, 120] }
+			token 14  { Idle [18,6963] [1, 6946] }
+			token 15 uncontrollable { _PickPlace-box_blue-H3-4 [19,6964] [1, 120] }
+			token 16  { Idle [20,6965] [1, 6946] }
+			token 17 uncontrollable { _PickPlace-box_blue-J3-3 [21,6966] [1, 120] }
+			token 18  { Idle [22,6967] [1, 6946] }
+			token 19 uncontrollable { _PickPlace-box_blue-J2-3 [23,6968] [1, 120] }
+			token 20  { Idle [24,6969] [1, 6946] }
+			token 21 uncontrollable { _PickPlace-box_blue-H2-4 [25,6970] [1, 120] }
+			token 22  { Idle [26,6971] [1, 6946] }
+			token 23 uncontrollable { _PickPlace-box_white-E2-0 [27,6972] [1, 120] }
+			token 24  { Idle [28,6973] [1, 6946] }
+			token 25 uncontrollable { _PickPlace-box_white-I2-0 [29,6974] [1, 120] }
+			token 26  { Idle [30,6975] [1, 6946] }
+			token 27 uncontrollable { _PickPlace-box_white-G2-0 [31,6976] [1, 120] }
+			token 28  { Idle [32,6977] [1, 6946] }
+			token 29 uncontrollable { _PickPlace-box_white-F4-0 [33,6978] [1, 120] }
+			token 30  { Idle [34,6979] [1, 6946] }
+			token 31 uncontrollable { _PickPlace-box_blue-G4-4 [35,6980] [1, 120] }
+			token 32  { Idle [36,6981] [1, 6946] }
+			token 33 uncontrollable { _PickPlace-box_blue-E4-0 [37,6982] [1, 120] }
+			token 34  { Idle [38,6983] [1, 6946] }
+			token 35 uncontrollable { _PickPlace-box_blue-J4-3 [39,6984] [1, 120] }
+			token 36  { Idle [40,6985] [1, 6946] }
+			token 37 uncontrollable { _PickPlace-box_white-H4-0 [41,6986] [1, 120] }
+			token 38  { Idle [42,6987] [1, 6946] }
+			token 39 uncontrollable { _PickPlace-box_blue-I4-0 [43,6988] [1, 120] }
+			token 40  { Idle [44,6993] [1, 6950] }
+			token 41 uncontrollable { _PickPlace-box_blue-I5-3 [45,6994] [1, 120] }
+			token 42  { Idle [46,6995] [1, 6950] }
+			token 43 uncontrollable { _PickPlace-box_white-H5-0 [47,6996] [1, 120] }
+			token 44  { Idle [48,6997] [1, 6950] }
+			token 45 uncontrollable { _PickPlace-box_white-F5-0 [49,6998] [1, 120] }
+			token 46  { Idle [50,6999] [1, 6950] }
+			token 47 uncontrollable { _PickPlace-box_blue-J5-1 [51,7000] [1, 120] }
+		}
+		Mosaic {
+			token 48  { DoRow1 [11,6956] [11, 6956] }
+			token 49  { Idle [12,6957] [1, 6946] }
+			token 50  { DoRow3 [21,6966] [9, 6954] }
+			token 51  { Idle [22,6967] [1, 6946] }
+			token 52  { DoRow2 [31,6976] [9, 6954] }
+			token 53  { Idle [32,6977] [1, 6946] }
+			token 54  { DoRow4 [43,6988] [11, 6956] }
+			token 55  { Idle [44,6989] [1, 6946] }
+			token 56  { DoRow5 [55,7000] [11, 6956] }
+		}
+		Robot {
+			token 57 uncontrollable { _PickPlace-box_orange-A1-1 [1,6946] [1, 120] }
+			token 58  { Idle [2,6947] [1, 6946] }
+			token 59 uncontrollable { _PickPlace-box_orange-C1-2 [3,6948] [1, 120] }
+			token 60  { Idle [4,6949] [1, 6946] }
+			token 61 uncontrollable { _PickPlace-box_orange-B1-1 [5,6950] [1, 120] }
+			token 62  { Idle [6,6951] [1, 6946] }
+			token 63 uncontrollable { _PickPlace-box_blue-G1-3 [7,6952] [1, 120] }
+			token 64  { Idle [8,6953] [1, 6946] }
+			token 65 uncontrollable { _PickPlace-box_blue-F1-3 [9,6954] [1, 120] }
+			token 66  { Idle [10,6955] [1, 6946] }
+			token 67 uncontrollable { _PickPlace-box_blue-D1-3 [11,6956] [1, 120] }
+			token 68  { Idle [12,6957] [1, 6946] }
+			token 69 uncontrollable { _PickPlace-box_blue-F3-4 [13,6958] [1, 120] }
+			token 70  { Idle [14,6959] [1, 6946] }
+			token 71 uncontrollable { _PickPlace-box_orange-C3-1 [15,6960] [1, 120] }
+			token 72  { Idle [16,6961] [1, 6946] }
+			token 73 uncontrollable { _PickPlace-box_orange-A3-1 [17,6962] [1, 120] }
+			token 74  { Idle [18,6963] [1, 6946] }
+			token 75 uncontrollable { _PickPlace-box_blue-D3-2 [19,6964] [1, 120] }
+			token 76  { Idle [20,6965] [1, 6946] }
+			token 77 uncontrollable { _PickPlace-box_orange-B3-1 [21,6966] [1, 120] }
+			token 78  { Idle [22,6967] [1, 6946] }
+			token 79 uncontrollable { _PickPlace-box_orange-A2-1 [23,6968] [1, 120] }
+			token 80  { Idle [24,6969] [1, 6946] }
+			token 81 uncontrollable { _PickPlace-box_blue-C2-2 [25,6970] [1, 120] }
+			token 82  { Idle [26,6971] [1, 6946] }
+			token 83 uncontrollable { _PickPlace-box_blue-D2-3 [27,6972] [1, 120] }
+			token 84  { Idle [28,6973] [1, 6946] }
+			token 85 uncontrollable { _PickPlace-box_blue-F2-4 [29,6974] [1, 120] }
+			token 86  { Idle [30,6975] [1, 6946] }
+			token 87 uncontrollable { _PickPlace-box_blue-B2-2 [31,6976] [1, 120] }
+			token 88  { Idle [32,6981] [1, 6950] }
+			token 89 uncontrollable { _PickPlace-box_orange-C4-3 [33,6982] [1, 120] }
+			token 90  { Idle [34,6983] [1, 6950] }
+			token 91 uncontrollable { _PickPlace-box_blue-B4-3 [35,6984] [1, 120] }
+			token 92  { Idle [36,6985] [1, 6950] }
+			token 93 uncontrollable { _PickPlace-box_blue-A4-2 [37,6986] [1, 120] }
+			token 94  { Idle [38,6987] [1, 6950] }
+			token 95 uncontrollable { _PickPlace-box_blue-D4-3 [39,6988] [1, 120] }
+			token 96  { Idle [44,6989] [1, 6950] }
+			token 97 uncontrollable { _PickPlace-box_blue-E5-3 [45,6990] [1, 120] }
+			token 98  { Idle [46,6991] [1, 6946] }
+			token 99 uncontrollable { _PickPlace-box_blue-D5-2 [47,6992] [1, 120] }
+			token 100  { Idle [48,6993] [1, 6946] }
+			token 101 uncontrollable { _PickPlace-box_orange-B5-1 [49,6994] [1, 120] }
+			token 102  { Idle [50,6995] [1, 6946] }
+			token 103 uncontrollable { _PickPlace-box_orange-C5-2 [51,6996] [1, 120] }
+			token 104  { Idle [52,6997] [1, 6946] }
+			token 105 uncontrollable { _PickPlace-box_orange-A5-1 [53,6998] [1, 120] }
+			token 106  { Idle [54,6999] [1, 6946] }
+			token 107 uncontrollable { _PickPlace-box_blue-G5-4 [55,7000] [1, 120] }
 		}
 	}
 	relations {
-		PointingMode 7 meets PointingMode 8
-		PointingMode 2 meets PointingMode 3
-		PointingMode 3 meets PointingMode 4
-		Satellite 21 during [0,500]  [0,500] PointingMode 8
-		Satellite 21 before [0,500] Satellite 23
-		Satellite 23 during [0,500]  [0,500] GroundStationWindow 28
-		Satellite 23 during [0,500]  [0,500] PointingMode 12
-		Satellite 25 during [0,500]  [0,500] PointingMode 14
-		Satellite 25 before [0,500] Satellite 26
-		Satellite 22 during [0,500]  [0,500] PointingMode 10
-		Satellite 22 before [0,500] Satellite 24
-		PointingMode 0 before [0,500] PointingMode 8
-		Satellite 18 during [0,500]  [0,500] PointingMode 4
-		Satellite 18 before [0,500] Satellite 20
-		PointingMode 0 before [0,500] PointingMode 10
-		PointingMode 8 before [0,500] PointingMode 10
-		Satellite 20 during [0,500]  [0,500] GroundStationWindow 28
-		Satellite 20 during [0,500]  [0,500] PointingMode 6
-		PointingMode 4 before [0,500] PointingMode 8
-		PointingMode 0 before [0,500] PointingMode 4
-		Satellite 24 during [0,500]  [0,500] GroundStationWindow 28
-		Satellite 24 during [0,500]  [0,500] PointingMode 12
-		Satellite 26 during [0,500]  [0,500] GroundStationWindow 28
-		Satellite 26 during [0,500]  [0,500] PointingMode 16
-		Satellite 17 during [0,500]  [0,500] PointingMode 2
-		Satellite 17 before [0,500] Satellite 19
-		PointingMode 0 before [0,500] PointingMode 6
-		PointingMode 4 before [0,500] PointingMode 6
-		PointingMode 6 before [0,500] PointingMode 8
-		PointingMode 4 before [0,500] PointingMode 12
-		PointingMode 10 before [0,500] PointingMode 12
-		Satellite 19 during [0,500]  [0,500] GroundStationWindow 28
-		Satellite 19 during [0,500]  [0,500] PointingMode 6
-		PointingMode 0 before [0,500] PointingMode 2
-		PointingMode 2 before [0,500] PointingMode 8
-		PointingMode 2 before [0,500] PointingMode 4
-		PointingMode 0 before [0,500] PointingMode 14
-		PointingMode 12 before [0,500] PointingMode 14
-		PointingMode 6 before [0,500] PointingMode 16
-		PointingMode 10 before [0,500] PointingMode 16
-		PointingMode 12 before [0,500] PointingMode 16
-		PointingMode 14 before [0,500] PointingMode 16
-		PointingMode 8 meets PointingMode 9
-		PointingMode 9 meets PointingMode 10
-		PointingMode 14 meets PointingMode 15
-		PointingMode 15 meets PointingMode 16
-		PointingMode 0 meets PointingMode 1
-		PointingMode 1 meets PointingMode 2
-		PointingMode 4 meets PointingMode 5
-		PointingMode 5 meets PointingMode 6
-		PointingMode 12 meets PointingMode 13
-		PointingMode 13 meets PointingMode 14
-		PointingMode 10 meets PointingMode 11
-		PointingMode 11 meets PointingMode 12
-		PointingMode 6 meets PointingMode 7
-	}
-}
-observation {
-	timelines {
-		GroundStationWindow {
-			token 27  { NotVisible [10,10] [10, 10] }
-			token 28  { Visible [160,160] [150, 150] }
-			token 29  { NotVisible [200,200] [40, 40] }
-			token 30  { Visible [300,300] [100, 100] }
-			token 31  { NotVisible [310,310] [10, 10] }
-			token 32  { Visible [460,460] [150, 150] }
-			token 33  { NotVisible [500,500] [40, 40] }
-		}
-		SunWindow {
-			token 34  { NotVisible [50,50] [50, 50] }
-			token 35  { Visible [250,250] [200, 200] }
-			token 36  { NotVisible [300,300] [50, 50] }
-			token 37  { Visible [450,450] [150, 150] }
-			token 38  { NotVisible [500,500] [50, 50] }
-		}
+		Mosaic 52 before [0,7000] Mosaic 54
+		Mosaic 50 before [0,7000] Mosaic 56
+		Mosaic 54 before [0,7000] Mosaic 56
+		Mosaic 48 before [0,7000] Mosaic 50
+		Mosaic 48 before [0,7000] Mosaic 54
+		Goal 0 contains [0,7000]  [0,7000] Mosaic 52
+		Goal 0 contains [0,7000]  [0,7000] Mosaic 50
+		Goal 0 contains [0,7000]  [0,7000] Mosaic 54
+		Goal 0 contains [0,7000]  [0,7000] Mosaic 56
+		Goal 0 contains [0,7000]  [0,7000] Mosaic 48
+		Mosaic 50 before [0,7000] Mosaic 52
+		Human 21 before [0,7000] Human 25
+		Robot 79 before [0,7000] Robot 85
+		Robot 85 before [0,7000] Robot 87
+		Mosaic 50 contains [0,7000]  [0,7000] Human 17
+		Robot 81 before [0,7000] Robot 85
+		Mosaic 50 contains [0,7000]  [0,7000] Human 9
+		Mosaic 50 contains [0,7000]  [0,7000] Human 15
+		Mosaic 50 contains [0,7000]  [0,7000] Human 11
+		Mosaic 50 contains [0,7000]  [0,7000] Robot 73
+		Robot 79 before [0,7000] Robot 81
+		Mosaic 50 contains [0,7000]  [0,7000] Robot 77
+		Mosaic 50 contains [0,7000]  [0,7000] Robot 71
+		Mosaic 50 contains [0,7000]  [0,7000] Robot 75
+		Mosaic 50 contains [0,7000]  [0,7000] Human 13
+		Human 19 before [0,7000] Human 21
+		Mosaic 50 contains [0,7000]  [0,7000] Robot 69
+		Human 25 before [0,7000] Human 27
+		Human 23 before [0,7000] Human 25
+		Robot 71 before [0,7000] Robot 75
+		Human 21 before [0,7000] Human 23
+		Human 9 before [0,7000] Human 15
+		Robot 83 before [0,7000] Robot 85
+		Robot 81 before [0,7000] Robot 83
+		Human 13 meets Human 14
+		Human 14 meets Human 15
+		Human 23 meets Human 24
+		Mosaic 54 contains [0,7000]  [0,7000] Robot 91
+		Human 24 meets Human 25
+		Mosaic 54 contains [0,7000]  [0,7000] Robot 89
+		Human 21 meets Human 22
+		Mosaic 54 contains [0,7000]  [0,7000] Robot 95
+		Human 22 meets Human 23
+		Mosaic 54 contains [0,7000]  [0,7000] Human 33
+		Human 15 meets Human 16
+		Mosaic 54 contains [0,7000]  [0,7000] Human 29
+		Human 16 meets Human 17
+		Mosaic 54 contains [0,7000]  [0,7000] Human 35
+		Human 37 meets Human 38
+		Mosaic 54 contains [0,7000]  [0,7000] Human 31
+		Human 38 meets Human 39
+		Mosaic 54 contains [0,7000]  [0,7000] Human 37
+		Human 35 meets Human 36
+		Mosaic 54 contains [0,7000]  [0,7000] Human 39
+		Human 36 meets Human 37
+		Mosaic 54 contains [0,7000]  [0,7000] Robot 93
+		Robot 83 meets Robot 84
+		Robot 84 meets Robot 85
+		Human 7 meets Human 8
+		Human 8 meets Human 9
+		Robot 79 meets Robot 80
+		Robot 80 meets Robot 81
+		Robot 81 meets Robot 82
+		Robot 82 meets Robot 83
+		Human 29 meets Human 30
+		Human 30 meets Human 31
+		Human 9 meets Human 10
+		Human 10 meets Human 11
+		Robot 101 meets Robot 102
+		Robot 102 meets Robot 103
+		Human 25 meets Human 26
+		Human 26 meets Human 27
+		Human 1 meets Human 2
+		Human 2 meets Human 3
+		Robot 75 meets Robot 76
+		Robot 76 meets Robot 77
+		Robot 61 meets Robot 62
+		Robot 62 meets Robot 63
+		Robot 65 meets Robot 66
+		Robot 66 meets Robot 67
+		Human 3 meets Human 4
+		Human 4 meets Human 5
+		Mosaic 50 before [0,7000] Mosaic 54
+		Robot 87 meets Robot 88
+		Robot 88 meets Robot 89
+		Robot 103 meets Robot 104
+		Robot 104 meets Robot 105
+		Robot 85 meets Robot 86
+		Robot 75 before [0,7000] Robot 77
+		Robot 86 meets Robot 87
+		Robot 93 meets Robot 94
+		Robot 94 meets Robot 95
+		Robot 57 meets Robot 58
+		Human 15 before [0,7000] Human 17
+		Robot 58 meets Robot 59
+		Robot 69 meets Robot 70
+		Robot 70 meets Robot 71
+		Robot 69 before [0,7000] Robot 75
+		Robot 71 meets Robot 72
+		Robot 72 meets Robot 73
+		Human 17 meets Human 18
+		Human 18 meets Human 19
+		Robot 69 before [0,7000] Robot 71
+		Robot 95 meets Robot 96
+		Robot 96 meets Robot 97
+		Robot 99 meets Robot 100
+		Robot 100 meets Robot 101
+		Human 29 before [0,7000] Human 31
+		Human 5 meets Human 6
+		Human 6 meets Human 7
+		Mosaic 50 meets Mosaic 51
+		Mosaic 51 meets Mosaic 52
+		Human 11 before [0,7000] Human 15
+		Robot 105 meets Robot 106
+		Robot 106 meets Robot 107
+		Robot 67 meets Robot 68
+		Robot 68 meets Robot 69
+		Human 9 before [0,7000] Human 11
+		Robot 97 meets Robot 98
+		Robot 98 meets Robot 99
+		Human 33 meets Human 34
+		Human 34 meets Human 35
+		Human 45 meets Human 46
+		Robot 73 before [0,7000] Robot 75
+		Human 46 meets Human 47
+		Robot 77 meets Robot 78
+		Robot 78 meets Robot 79
+		Robot 59 meets Robot 60
+		Robot 71 before [0,7000] Robot 73
+		Robot 60 meets Robot 61
+		Human 39 meets Human 40
+		Human 40 meets Human 41
+		Robot 73 meets Robot 74
+		Human 31 before [0,7000] Human 35
+		Robot 74 meets Robot 75
+		Robot 89 meets Robot 90
+		Robot 90 meets Robot 91
+		Human 27 meets Human 28
+		Robot 91 before [0,7000] Robot 93
+		Human 28 meets Human 29
+		Human 11 meets Human 12
+		Human 12 meets Human 13
+		Mosaic 52 meets Mosaic 53
+		Human 35 before [0,7000] Human 37
+		Mosaic 53 meets Mosaic 54
+		Human 43 meets Human 44
+		Human 44 meets Human 45
+		Human 33 before [0,7000] Human 35
+		Human 31 meets Human 32
+		Human 32 meets Human 33
+		Robot 63 meets Robot 64
+		Robot 64 meets Robot 65
+		Human 41 meets Human 42
+		Human 31 before [0,7000] Human 33
+		Human 42 meets Human 43
+		Mosaic 54 meets Mosaic 55
+		Mosaic 55 meets Mosaic 56
+		Human 19 meets Human 20
+		Human 20 meets Human 21
+		Robot 93 before [0,7000] Robot 95
+		Robot 91 meets Robot 92
+		Robot 92 meets Robot 93
+		Mosaic 48 meets Mosaic 49
+		Mosaic 49 meets Mosaic 50
+		Robot 89 before [0,7000] Robot 91
+		Human 37 before [0,7000] Human 39
+		Human 13 before [0,7000] Human 15
+		Human 11 before [0,7000] Human 13
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 67
+		Mosaic 48 contains [0,7000]  [0,7000] Human 3
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 65
+		Mosaic 48 contains [0,7000]  [0,7000] Human 5
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 63
+		Mosaic 48 contains [0,7000]  [0,7000] Human 1
+		Mosaic 48 contains [0,7000]  [0,7000] Human 7
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 57
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 61
+		Mosaic 48 contains [0,7000]  [0,7000] Robot 59
+		Robot 57 before [0,7000] Robot 59
+		Human 3 before [0,7000] Human 5
+		Robot 59 before [0,7000] Robot 63
+		Robot 63 before [0,7000] Robot 65
+		Human 5 before [0,7000] Human 7
+		Robot 65 before [0,7000] Robot 67
+		Human 1 before [0,7000] Human 3
+		Robot 61 before [0,7000] Robot 63
+		Robot 59 before [0,7000] Robot 61
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 99
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 97
+		Mosaic 56 contains [0,7000]  [0,7000] Human 45
+		Mosaic 56 contains [0,7000]  [0,7000] Human 47
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 107
+		Mosaic 56 contains [0,7000]  [0,7000] Human 43
+		Mosaic 56 contains [0,7000]  [0,7000] Human 41
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 105
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 101
+		Mosaic 56 contains [0,7000]  [0,7000] Robot 103
+		Robot 99 before [0,7000] Robot 101
+		Robot 101 before [0,7000] Robot 103
+		Robot 103 before [0,7000] Robot 105
+		Robot 97 before [0,7000] Robot 99
+		Human 45 before [0,7000] Human 47
+		Human 43 before [0,7000] Human 45
+		Human 41 before [0,7000] Human 43
+		Robot 105 before [0,7000] Robot 107
+		Mosaic 52 contains [0,7000]  [0,7000] Human 27
+		Mosaic 52 contains [0,7000]  [0,7000] Human 21
+		Mosaic 52 contains [0,7000]  [0,7000] Human 25
+		Mosaic 52 contains [0,7000]  [0,7000] Robot 79
+		Mosaic 52 contains [0,7000]  [0,7000] Robot 87
+		Mosaic 52 contains [0,7000]  [0,7000] Robot 81
+		Mosaic 52 contains [0,7000]  [0,7000] Robot 83
+		Mosaic 52 contains [0,7000]  [0,7000] Human 23
+		Mosaic 52 contains [0,7000]  [0,7000] Robot 85
+		Mosaic 52 contains [0,7000]  [0,7000] Human 19
 	}
 }

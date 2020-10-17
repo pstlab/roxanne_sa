@@ -21,7 +21,7 @@ import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
  */
 public abstract class PlatformProxy 
 {
-	protected static final AtomicInteger OBS_COUNTER = new AtomicInteger(0);
+	protected static final AtomicInteger obsIdCounter = new AtomicInteger(0);
 	protected static final AtomicInteger cmdIdCounter = new AtomicInteger(0);
 	
 	protected final List<PlatformObserver> observers;							// list of platform observers

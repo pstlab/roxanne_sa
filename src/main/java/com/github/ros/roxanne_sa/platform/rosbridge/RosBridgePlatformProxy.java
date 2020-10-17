@@ -69,7 +69,7 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		if (this.bridge == null)
 		{
 			// set observation counter
-			OBS_COUNTER.set(0);
+			obsIdCounter.set(0);
 			cmdIdCounter.set(0);
 			
 			// clear data structures

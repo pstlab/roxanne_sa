@@ -670,7 +670,8 @@ public final class SimpleTemporalNetworkWithUncertainty extends TemporalNetwork
 			
 			try 
 			{
-				File pdlFile = new File("stnu.dot");
+				File pdlFile = new File(
+						FRAMEWORK_HOME + "stnu.dot");
 				try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(pdlFile), "UTF-8"))) {
 					// write file
 					writer.write(str);

@@ -38,7 +38,7 @@
   	<repositories>
   		<repository>
 			<id>github</id>
-			<name>GitHub ROXANNE - Stand Alone Maven Packages</name>
+			<name>GitHub ROXANNE - Stand Alone Apache Maven Package</name>
 			<url>https://github.com/pstlab/roxanne_sa.git</url>
 		</repository>
 	</repositories>
@@ -90,5 +90,14 @@
 	</dependency>
 	
   </dependencies>
+  
+  <distributionManagement>
+  	<repository>
+  		<id>github</id>
+  		<name>GitHub ROXANNE - Stand Alone Apache Maven Package</name>
+  		<url>https://maven.pkg.github.com/pstlab/roxanne_sa</url>
+  	</repository>
+  
+  </distributionManagement>
   	
 </project>

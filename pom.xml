@@ -1,9 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>com.github.ros</groupId>
   <artifactId>roxanne_sa</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   
   <name>ROXANNE - Stand Alone</name>
   <url>https://github.com/pstlab/roxanne_sa</url>
@@ -33,6 +35,14 @@
     	<maven.compiler.release>1.8</maven.compiler.release>
 	    <skipTests>true</skipTests>
   	</properties>	
+  	
+  	<repositories>
+  		<repository>
+			<id>github</id>
+			<name>GitHub ROXANNE - Stand Alone Maven Packages</name>
+			<url>https://github.com/pstlab/roxanne_sa.git</url>
+		</repository>
+	</repositories>
   
   <dependencies>
 

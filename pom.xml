@@ -8,7 +8,6 @@
   <packaging>jar</packaging>
   
   <name>ROXANNE - Stand Alone</name>
-  <url>https://github.com/pstlab/roxanne_sa</url>
   <description>
   	Although reliable and effective, standard control techniques are static 
   	and may limit the adaptability of robotic systems to modern production 

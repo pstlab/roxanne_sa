@@ -1,13 +1,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   
   <modelVersion>4.0.0</modelVersion>
-  <groupId>it.cnr.istc.pst.ros</groupId>
-  <artifactId>roxanne_taskplanner_sa</artifactId>
+  <groupId>com.github.ros</groupId>
+  <artifactId>roxanne_sa</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-  <name>ROXANNE</name>
-  <url>ROs fleXible ActiNg coNtrollEr</url>
-  <description>Although reliable and effective, standard control techniques are static and may limit the adaptability of robotic systems to modern production needs. Flexible production systems require a high degree of flexibility to address changing production goals. Flexibility is also a strong requirement in Human-Robot Collaboration where robots must cooperate and interact with humans at different levels. Artificial Intelligence can enhance robot controllers with the flexibility needed to achieve the desired level of autonomy. ROXANNE (ROs fleXible ActiNg coNtrollEr) proposes a ROS package to facilitate the integration of AI planning and execution techniques with robotic platforms and their deployment in robotic applications.</description>
+  <name>ROXANNE - Stand Alone</name>
+  <url>https://github.com/pstlab/roxanne_sa</url>
+  <description>
+  	Although reliable and effective, standard control techniques are static 
+  	and may limit the adaptability of robotic systems to modern production 
+  	needs. Flexible production systems require a high degree of 
+  	flexibility to address changing production goals. 
+  	
+  	Flexibility is also a strong requirement in Human-Robot Collaboration 
+  	where robots must cooperate and interact with humans at different 
+  	levels. Artificial Intelligence can enhance robot controllers with the 
+  	flexibility needed to achieve the desired level of autonomy. 
+  	
+  	ROXANNE (ROs fleXible ActiNg coNtrollEr) proposes a ROS package to 
+  	facilitate the integration of AI planning and execution techniques with 
+  	robotic platforms and their deployment in robotic applications.
+  </description>
 	
 	<organization>
 		<name>National Research Council of Italy</name>

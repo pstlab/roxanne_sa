@@ -1,5 +1,0 @@
-PROBLEM HRC_MOSAIC_PROBLEM (DOMAIN SHAREWORK_HRC_MOSAIC_V2)
-{
-	// high-level production goal
-	g0 <goal> Goal.hrc.DoMosaic() AT [0, +INF] [0, +INF] [0, +INF];
-}

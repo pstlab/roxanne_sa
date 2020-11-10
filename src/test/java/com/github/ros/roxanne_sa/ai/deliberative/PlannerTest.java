@@ -11,8 +11,6 @@ import com.github.ros.roxanne_sa.ai.framework.microkernel.annotation.cfg.deliber
 import com.github.ros.roxanne_sa.ai.framework.utils.log.FrameworkLoggingLevel;
 
 
-
-
 @PlannerSolverConfiguration(
 		solver = PseudoControllabilityAwareSolver.class
 //		timeout = 180000
@@ -32,7 +30,7 @@ import com.github.ros.roxanne_sa.ai.framework.utils.log.FrameworkLoggingLevel;
 )
 @FrameworkLoggerConfiguration(		
 		// set logging level
-		level = FrameworkLoggingLevel.OFF
+		level = FrameworkLoggingLevel.INFO
 )
 public class PlannerTest extends Planner {
 

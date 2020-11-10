@@ -16,7 +16,7 @@ import com.github.ros.roxanne_sa.ai.framework.utils.properties.FilePropertyReade
  * @author anacleto
  *
  */
-class PlanFlawInspector extends FlawInspector 
+public class PlanFlawInspector extends FlawInspector 
 {
 	private FlawType[] preferences;
 

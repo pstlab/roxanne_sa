@@ -17,7 +17,7 @@ import com.github.ros.roxanne_sa.ai.framework.microkernel.resolver.ex.Unsolvable
  * @author anacleto
  *
  */
-class DegreeFlawInspector extends FlawInspector implements Comparator<Flaw>
+public class DegreeFlawInspector extends FlawInspector implements Comparator<Flaw>
 {
 	/**
 	 * 

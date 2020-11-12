@@ -183,8 +183,8 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	{
 		// set next node of the fringe
 		SearchSpaceNode next = null;
-		try {
-			
+		try 
+		{
 			// extract the "best" node from the fringe
 			next = this.fringe.remove();
 		}

@@ -33,7 +33,8 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
  	private double[] makespan;									// average makespan of timelines
  	private double[] duration;									// average duration of timelines
 	private double cost; 										// node generation cost
-	private double heuristic;									// node heuristic estimation (e.g., planning distance)
+	private double planningHeuristic;							// node heuristic estimation of cost (e.g., planning distance)
+	private double makespanHeuristic;							// node heuristic estimation of makespan 
 	
 	private Object domainSpecificMetric;						// node domain specific metric
 	
@@ -46,7 +47,8 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		// set operators
 		this.operators = new ArrayList<>();
 		// set default heuristic estimation
-		this.heuristic = 0;
+		this.planningHeuristic = 0;
+		this.makespanHeuristic = 0;
 		// set plan generation cost 
 		this.cost = 0.0;
 		// set agenda
@@ -80,7 +82,8 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		this.operators.add(op);
 		
 		// set default heuristic estimation
-		this.heuristic = 0;
+		this.planningHeuristic = 0;
+		this.makespanHeuristic = 0;
 		// update plan generation cost
 		this.cost = parent.getCost() + op.getCost();
 		// set agenda
@@ -205,17 +208,32 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 * 
 	 * @return
 	 */
-	public double getHeuristic() {
-		return heuristic;
+	public double getPlanningHeuristic() {
+		return planningHeuristic;
 	}
 	
 	/**
 	 * 
 	 * @param heuristic
 	 */
-	public void setHeuristic(double heuristic) {
-		this.heuristic = heuristic;
+	public void setPlanningHeuristic(double heuristic) {
+		this.planningHeuristic = heuristic;
+	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public double getMakespanHeuristic() {
+		return makespanHeuristic;
+	}
+	
+	/**
+	 * 
+	 * @param makespanHeuristic
+	 */
+	public void setMakespanHeuristic(double makespanHeuristic) {
+		this.makespanHeuristic = makespanHeuristic;
 	}
 	
 	/**
@@ -432,13 +450,15 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 */
 	@Override
 	public String toString() {
+		// JSON style description of node
 		return "{ "
-				+ "id: " + this.id + ", "
-				+ "depth: " + this.getDepth() + ", "
-				+ "cost: " + this.getCost() + ", "
-				+ "heuristic: " + this.heuristic + ", "
-				+ "makespan: [" + this.makespan[0] + ", " + this.makespan[1] + "], "
-				+ "duration: [" + this.duration[0] +", " + this.duration[1] + "], "
+				+ "\"id\": " + this.id + ", "
+				+ "\"depth\": " + this.getDepth() + ", "
+				+ "\"cost\": " + this.getCost() + ", "
+				+ "\"makespan\": [" + this.makespan[0] + ", " + this.makespan[1] + "], "
+				+ "\"duration\": [" + this.duration[0] +", " + this.duration[1] + "], "
+				+ "\"planning-heuristic\": " + this.planningHeuristic + ", "
+				+ "\"makespan-heuristic\" : " + this.makespanHeuristic + ", "
 				+ (this.domainSpecificMetric != null ? "additional-metric: " + this.domainSpecificMetric.toString() + ", " : "")
 				+ " }";
 	}

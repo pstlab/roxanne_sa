@@ -1,6 +1,9 @@
 package com.github.ros.roxanne_sa.ai.deliberative.strategy;
 
+import java.util.Map;
+
 import com.github.ros.roxanne_sa.ai.deliberative.solver.SearchSpaceNode;
+import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponent;
 
 /**
  * 
@@ -23,9 +26,9 @@ public class MakespanGreedyDepthSearchStrategy extends SearchStrategy
 	public void enqueue(SearchSpaceNode node) 
 	{
 		// compute a pessimistic estimation of flaw resolution cost
-		double hValue = this.computePlanningHeuristics(node);
+		Map<DomainComponent, Double[]> h = this.computeHeuristicCost(node);
 		// set heuristic estimation
-		node.setPlanningHeuristic(hValue);
+		node.setHeuristicCost(h);
 		// add the node to the priority queue
 		this.fringe.offer(node);
 	}
@@ -34,10 +37,11 @@ public class MakespanGreedyDepthSearchStrategy extends SearchStrategy
 	 * 
 	 */
 	@Override
-	public int compare(SearchSpaceNode o1, SearchSpaceNode o2) {
+	public int compare(SearchSpaceNode o1, SearchSpaceNode o2) 
+	{
 		// compare heuristics and makespan of nodes and use depth as last selection criterion
-		return  o1.getPlanningHeuristic() < o2.getPlanningHeuristic() ? -1 : o1.getPlanningHeuristic() > o2.getPlanningHeuristic() ? 1 :
-			o1.getMakespan()[0] < o2.getMakespan()[0] ? -1 : o1.getMakespan()[0] > o2.getMakespan()[0] ? 1 : 
+		return  o1.getPlanHeuristicCost()[0] < o2.getPlanHeuristicCost()[0] ? -1 : o1.getPlanHeuristicCost()[0] > o2.getPlanHeuristicCost()[0] ? 1 :
+			o1.getPlanMakespan()[0] < o2.getPlanMakespan()[0] ? -1 : o1.getPlanMakespan()[0] > o2.getPlanMakespan()[0] ? 1 : 
 				o1.getDepth() > o2.getDepth() ? -1 : o1.getDepth() < o2.getDepth() ? 1 : 0;
 	}
 }

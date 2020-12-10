@@ -32,7 +32,7 @@ public class CostDepthSearchStrategy extends SearchStrategy
 	@Override
 	public int compare(SearchSpaceNode o1, SearchSpaceNode o2) {
 		// compare node depths and costs
-		return o1.getDepth() > o2.getDepth() ? -1 : o1.getDepth() < o2.getDepth() ? 1 : 
-			o1.getCost() < o2.getCost() ? -1 : o1.getCost() > o2.getCost() ? 1 : 0;
+		return o1.getPlanCost() < o2.getPlanCost() ? -1 : o1.getPlanCost() > o2.getPlanCost() ? 1 :
+			o1.getDepth() > o2.getDepth() ? -1 : o1.getDepth() < o2.getDepth() ? 1 : 0;
 	}
 }

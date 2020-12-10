@@ -20,8 +20,7 @@ public class Plan
 {
 	private Map<DomainComponent, Set<Decision>> decisions;
 	private List<Relation> relations;
-	private double[] makespan;
-	private double[] duration;
+	private Map<DomainComponent, Double[]> makespan;
 	
 	/**
 	 * 
@@ -29,47 +28,15 @@ public class Plan
 	public Plan() {
 		this.decisions = new HashMap<>();
 		this.relations = new ArrayList<>();
-		this.makespan = new double[] {
-				Double.MAX_VALUE - 1, 
-				Double.MAX_VALUE - 1
-		};
-		
-		this.duration = new double[] {
-				Double.MAX_VALUE - 1, 
-				Double.MAX_VALUE - 1
-		};
-	}
-	
-	/**
-	 * 
-	 * @param makespan
-	 */
-	public void setMakespan(double[] makespan) {
-		this.makespan = makespan;
+		this.makespan = new HashMap<>();
 	}
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public double[] getMakespan() {
-		return this.makespan;
-	}
-	
-	/**
-	 * 
-	 * @param duration
-	 */
-	public void setBehaviorDuration(double[] duration) {
-		this.duration = duration;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public double[] getBehaviorDuration() {
-		return this.duration;
+	public Map<DomainComponent, Double[]> getMakespan() {
+		return new HashMap<>(this.makespan);
 	}
 	
 	/**
@@ -111,6 +78,23 @@ public class Plan
 		}
 		
  		this.decisions.get(goal.getComponent()).add(goal);
+ 		
+ 		
+ 		// update makespan 
+ 		if (!this.makespan.containsKey(goal.getComponent())) {
+ 			// set min and max durations as makespan 
+ 			this.makespan.put(goal.getComponent(), new Double[] {
+ 				(double) goal.getDuration()[0],
+ 				(double) goal.getDuration()[1]
+ 			});
+ 		}
+ 		else {
+ 			// update makespan
+ 			this.makespan.put(goal.getComponent(), new Double[] {
+ 					this.makespan.get(goal.getComponent())[0] + ((double) goal.getDuration()[0]),
+ 					this.makespan.get(goal.getComponent())[1] + ((double) goal.getDuration()[1]),
+ 			});
+ 		}
 	}
 	
 	/**
@@ -136,9 +120,7 @@ public class Plan
 	@Override
 	public String toString() {
 		// JSON style description
-		String json = "{\n"
-				+ "\tmakespan: [" + this.makespan[0] + ", " + this.makespan[1] +"],\n";
-		
+		String json = "{\n";
 		// add decisions by component
 		for (DomainComponent comp : this.decisions.keySet()) {
 			json += "\t" + comp.getName() + ": " + this.decisions.get(comp).toString() + ",\n";

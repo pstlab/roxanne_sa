@@ -385,25 +385,20 @@ public final class PlanDataBaseComponent extends DomainComponent implements Plan
 	@Override
 	public synchronized Plan getPlan() 
 	{
-	// initialize the plan
-	Plan plan = new Plan();
-	// get decisions
-	for (Decision goal : this.getActiveDecisions()) {
-		plan.add(goal);
-	}
-	
-	// get relations
-	for (Relation rel : this.getActiveRelations()) {
-		plan.add(rel);
-	}
-	
-	// set the makespan
-	plan.setMakespan(this.getMakespan());
-	// set the average duration
-	plan.setBehaviorDuration(this.getBehaviorDuration());
-	
-	// get the plan
-	return plan;
+		// initialize the plan
+		Plan plan = new Plan();
+		// get decisions
+		for (Decision goal : this.getActiveDecisions()) {
+			plan.add(goal);
+		}
+		
+		// get relations
+		for (Relation rel : this.getActiveRelations()) {
+			plan.add(rel);
+		}
+		
+		// get the plan
+		return plan;
 	}
 
 	

@@ -3,8 +3,6 @@ package com.github.ros.roxanne_sa.ai.deliberative.solver;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.Document;
-
 import com.github.ros.roxanne_sa.ai.deliberative.heuristic.pipeline.PipelineFlawSelectionHeuristic;
 import com.github.ros.roxanne_sa.ai.deliberative.strategy.CostDepthSearchStrategy;
 import com.github.ros.roxanne_sa.ai.deliberative.strategy.ex.EmptyFringeException;
@@ -17,10 +15,6 @@ import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.ex.NoSolutionFoun
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.ex.PlanRefinementException;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.flaw.Flaw;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.resolver.ex.UnsolvableFlawException;
-import com.github.ros.roxanne_sa.ai.framework.utils.properties.FilePropertyReader;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 
 
@@ -52,29 +46,6 @@ public class PseudoControllabilityAwareSolver extends Solver
 	public SearchSpaceNode solve() 
 			throws NoSolutionFoundException 
 	{
-		// set client connection
-		MongoClient client = null;
-		// prepare collection
-		MongoCollection<Document> collection = null;
-		// get deliberative property file
-		FilePropertyReader properties = new FilePropertyReader(
-				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
-		// get mongodb
-		String mongodb = properties.getProperty("mongodb").trim();
-		// check if exists
-		if (mongodb != null && !mongodb.equals("")) 
-		{
-			// create a collection to the DB
-			client = new MongoClient();
-			// get db 
-			MongoDatabase db = client.getDatabase(mongodb);
-			// get collection
-			collection = db.getCollection("search_data");
-			// remove all data from the collection
-			collection.drop();
-		}
-		
-		
 		// set solving start time
 		long start = System.currentTimeMillis();
 		// set solving step counter
@@ -123,31 +94,6 @@ public class PseudoControllabilityAwareSolver extends Solver
 				}
 				// info log 
 				info(info);
-				
-				
-				// check db collection
-				if (collection != null) {
-					// create solving statistic record
-					Document doc = new Document("step", node.getId());
-					doc.append("fringe-size", this.fringe.getFringeSize());
-					doc.append("node-depth", node.getDepth());
-					doc.append("node-cost", node.getCost());
-					doc.append("node-planning-heuristic", node.getPlanningHeuristic());
-					doc.append("node-makespan-heuristic", node.getMakespanHeuristic());
-					doc.append("node-min-makespan", node.getMakespan()[0]);
-					doc.append("node-max-makespan", node.getMakespan()[1]);
-					doc.append("node-min-duration", node.getBehaviorDuration()[0]);
-					doc.append("node-max-duration", node.getBehaviorDuration()[1]);
-					doc.append("node-number-of-flaws", node.getNumberOfFlaws());
-					// check additional metric
-					if (node.getDomainSpecificMetric() != null) {
-						// add additional metric
-						doc.append("node-domain-specific-metric", node.getDomainSpecificMetric().toString());
-					}
-					
-					// insert data into the collection
-					collection.insertOne(doc);
-				}
 				
 				// propagate extracted node
 				this.contextSwitch(last, node);
@@ -235,10 +181,6 @@ public class PseudoControllabilityAwareSolver extends Solver
 				{
 					// clear search strategy
 					this.fringe.clear();
-					// close DB connection if necessary 
-					if (client != null) {
-						client.close();
-					}
 				}
 			}
 			

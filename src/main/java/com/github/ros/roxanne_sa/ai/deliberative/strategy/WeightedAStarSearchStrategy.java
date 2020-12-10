@@ -1,6 +1,9 @@
 package com.github.ros.roxanne_sa.ai.deliberative.strategy;
 
+import java.util.Map;
+
 import com.github.ros.roxanne_sa.ai.deliberative.solver.SearchSpaceNode;
+import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponent;
 
 /**
  * 
@@ -23,9 +26,9 @@ public class WeightedAStarSearchStrategy extends SearchStrategy
 	public void enqueue(SearchSpaceNode node) 
 	{
 		// compute a pessimistic estimation of flaw resolution cost
-		double hValue = this.computePlanningHeuristics(node);
+		Map<DomainComponent, Double[]> h = this.computeHeuristicCost(node);
 		// set heuristic estimation
-		node.setPlanningHeuristic(hValue);
+		node.setHeuristicCost(h);
 		// add the node to the priority queue
 		this.fringe.offer(node);
 	}
@@ -39,8 +42,8 @@ public class WeightedAStarSearchStrategy extends SearchStrategy
 		// set cost weight
 		double weight = .3;
 		// compute evaluation functions
-		double f1 = (weight * o1.getCost()) + ((1.0 - weight) * o1.getPlanningHeuristic());
-		double f2 = (weight * o2.getCost()) + ((1.0 - weight) * o2.getPlanningHeuristic());
+		double f1 = (weight * o1.getPlanCost()) + ((1.0 - weight) * o1.getPlanHeuristicCost()[0]);
+		double f2 = (weight * o2.getPlanCost()) + ((1.0 - weight) * o2.getPlanHeuristicCost()[0]);
 		// compare evaluation functions 
 		return f1 < f2 ? -1 : f1 > f2 ? 1 : 
 			o1.getDepth() > o2.getDepth() ? -1 : o1.getDepth() < o2.getDepth() ? 1 : 0;

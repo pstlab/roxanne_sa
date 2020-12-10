@@ -30,12 +30,14 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	private Map<DomainComponent, List<DecisionVariable>> plan;	// partial plan
  	private Map<DomainComponent, List<Flaw>> agenda; 			// flaws associated to the resulting partial plan
  	
- 	private double[] makespan;									// average makespan of timelines
- 	private double[] duration;									// average duration of timelines
-	private double cost; 										// node generation cost
-	private double planningHeuristic;							// node heuristic estimation of cost (e.g., planning distance)
-	private double makespanHeuristic;							// node heuristic estimation of makespan 
-	
+ 	// consolidated information about a partial plan 
+ 	private Map<DomainComponent, Double[]> makespan;				// consolidated makespan of SVs
+ 	private Map<DomainComponent, Double> cost;					// consolidated planning cost of SVs
+ 	
+ 	// heuristic information about a partial plan 
+ 	private Map<DomainComponent, Double[]> heuristicMakespan;		// estimated makespan of SVs
+ 	private Map<DomainComponent, Double[]> heuristicCost;			// estimated planning cost of SVs
+ 	
 	private Object domainSpecificMetric;						// node domain specific metric
 	
 	/**
@@ -46,26 +48,16 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		this.id = ID_COUNTER.getAndIncrement();
 		// set operators
 		this.operators = new ArrayList<>();
-		// set default heuristic estimation
-		this.planningHeuristic = 0;
-		this.makespanHeuristic = 0;
-		// set plan generation cost 
-		this.cost = 0.0;
 		// set agenda
 		this.agenda = new HashMap<>();
 		
-		this.makespan = new double[] {
-				Double.MAX_VALUE - 1,
-				Double.MAX_VALUE - 1
-		};
-		
-		this.duration = new double[] {
-				Double.MAX_VALUE - 1,
-				Double.MAX_VALUE - 1
-		};
-		
 		// set additional metric
 		this.domainSpecificMetric = null;
+		
+		this.makespan = new HashMap<>();
+		this.cost = new HashMap<>();
+		this.heuristicMakespan = new HashMap<>();
+		this.heuristicCost = new HashMap<>();
 	}
 	
 	/**
@@ -80,27 +72,30 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		this.operators = new ArrayList<>(parent.getOperators());
 		// add generator
 		this.operators.add(op);
-		
-		// set default heuristic estimation
-		this.planningHeuristic = 0;
-		this.makespanHeuristic = 0;
-		// update plan generation cost
-		this.cost = parent.getCost() + op.getCost();
 		// set agenda
 		this.agenda = new HashMap<>();
 		
-		this.makespan = new double[] {
-				Double.MAX_VALUE - 1,
-				Double.MAX_VALUE - 1
-		};
-		
-		this.duration = new double[] {
-				Double.MAX_VALUE - 1,
-				Double.MAX_VALUE - 1
-		};
-		
 		// set additional metric
 		this.domainSpecificMetric = null;
+		
+		// set cost
+		this.cost = new HashMap<>(parent.getCost());
+		// update cost according to the operator
+		if (!this.cost.containsKey(op.getFlaw().getComponent())) {
+			// set cost
+			this.cost.put(op.getFlaw().getComponent(), op.getCost());
+		}
+		else {
+			// update cost
+			this.cost.put(op.getFlaw().getComponent(),
+					this.cost.get(op.getFlaw().getComponent()) + op.getCost());
+		}
+		
+		
+		// set makespan 
+		this.makespan = new HashMap<>(parent.getMakespan());
+		this.heuristicCost = new HashMap<>();
+		this.heuristicMakespan = new HashMap<>();
 	}
 	
 	
@@ -208,32 +203,32 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 * 
 	 * @return
 	 */
-	public double getPlanningHeuristic() {
-		return planningHeuristic;
+	public Map<DomainComponent, Double[]> getHeuristicCost() {
+		return new HashMap<>(this.heuristicCost);
 	}
 	
 	/**
 	 * 
-	 * @param heuristic
+	 * @param hCost
 	 */
-	public void setPlanningHeuristic(double heuristic) {
-		this.planningHeuristic = heuristic;
+	public void setHeuristicCost(Map<DomainComponent, Double[]> hCost) {
+		this.heuristicCost = hCost;
 	}
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public double getMakespanHeuristic() {
-		return makespanHeuristic;
+	public Map<DomainComponent, Double[]> getHeuristicMakespan() {
+		return new HashMap<>(this.heuristicMakespan);
 	}
 	
 	/**
 	 * 
 	 * @param makespanHeuristic
 	 */
-	public void setMakespanHeuristic(double makespanHeuristic) {
-		this.makespanHeuristic = makespanHeuristic;
+	public void setHeuristicMakespan(Map<DomainComponent, Double[]> hMakespan) {
+		this.heuristicMakespan = hMakespan;
 	}
 	
 	/**
@@ -257,9 +252,7 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		
 		
 		// set the makespan
-		this.makespan = partialPlan.getMakespan();
-		// set duration
-		this.duration = partialPlan.getBehaviorDuration();
+		this.makespan = new HashMap<>(partialPlan.getMakespan());
 	}
 	
 	/**
@@ -275,25 +268,93 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 * 
 	 * @return
 	 */
-	public double getCost() {
-		// get the generation cost of the associated partial plan
-		return this.cost;
+	public Map<DomainComponent, Double> getCost() {
+		// get cost by components
+		return new HashMap<>(this.cost);
 	}
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public double[] getMakespan() {
-		return this.makespan;
+	public double getPlanCost() {
+		double cost = 0;
+		for (DomainComponent c : this.cost.keySet()) {
+			cost += this.cost.get(c);
+		}
+		
+		return cost;
 	}
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public double[] getBehaviorDuration() {
-		return this.duration;
+	public double[] getPlanHeuristicCost() {
+		// set cost
+		double[] cost = new double[] {
+				0, 0
+		};
+		
+		// set optimistic and pessimistic costs
+		for (DomainComponent c : this.heuristicCost.keySet()) {
+			cost[0] += this.heuristicCost.get(c)[0];
+			cost[1] += this.heuristicCost.get(c)[1];
+		}
+		
+		// get cost
+		return cost;
+	}
+	
+	/**
+	 * Return the minimum and maximum makespan of the timelines of a plan
+	 * 
+	 * @return
+	 */
+	public double[] getPlanMakespan() {
+		double[] mk = new double[] {
+				Double.MAX_VALUE - 1, 
+				Double.MIN_VALUE + 1
+		};
+		
+		for (DomainComponent c : this.makespan.keySet()) {
+			// update min and max
+			mk[0] = Math.min(mk[0], this.makespan.get(c)[0]);
+			// update max
+			mk[1] = Math.max(mk[1], this.makespan.get(c)[1]);
+		}
+		
+		// get plan makespan 
+		return mk;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public double[] getPlanHeuristicMakespan() {
+		double[] mk = new double[] {
+				Double.MAX_VALUE - 1, 
+				Double.MIN_VALUE + 1
+		};
+		
+		for (DomainComponent c : this.heuristicMakespan.keySet()) {
+			// update min and max
+			mk[0] = Math.min(mk[0], this.heuristicMakespan.get(c)[0]);
+			// update max
+			mk[1] = Math.max(mk[1], this.heuristicMakespan.get(c)[1]);
+		}
+		
+		// get plan makespan 
+		return mk;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Map<DomainComponent, Double[]> getMakespan() {
+		return new HashMap<>(this.makespan);
 	}
 	
 	/**
@@ -436,13 +497,11 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	
 	/**
 	 * 
-	 * @param o
-	 * @return
 	 */
 	@Override
 	public int compareTo(SearchSpaceNode o) {
 		// compare nodes by their ID
-		return this.cost < o.cost ? -1 : this.cost > o.cost ? 1 : 0;
+		return this.id < o.id ? -1 : this.id > o.id ? 1 : 0;
 	}
 	
 	/**
@@ -454,12 +513,10 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		return "{ "
 				+ "\"id\": " + this.id + ", "
 				+ "\"depth\": " + this.getDepth() + ", "
-				+ "\"cost\": " + this.getCost() + ", "
-				+ "\"makespan\": [" + this.makespan[0] + ", " + this.makespan[1] + "], "
-				+ "\"duration\": [" + this.duration[0] +", " + this.duration[1] + "], "
-				+ "\"planning-heuristic\": " + this.planningHeuristic + ", "
-				+ "\"makespan-heuristic\" : " + this.makespanHeuristic + ", "
-				+ (this.domainSpecificMetric != null ? "additional-metric: " + this.domainSpecificMetric.toString() + ", " : "")
+				+ "\"cost\": " + this.getPlanCost() + ", "
+				+ "\"makespan\": [" + this.getPlanMakespan()[0] + ", " + this.getPlanMakespan()[1] + "], "
+				+ "\"heuristic-cost\": [" + this.getPlanHeuristicCost()[0] +", " + this.getPlanHeuristicCost()[1] + "], "
+				+ "\"heuristic-makespan\": [" + this.getPlanHeuristicMakespan()[0] + ", " + this.getPlanHeuristicMakespan()[1] + "] "
 				+ " }";
 	}
 }

@@ -13,6 +13,8 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
+import org.bson.Document;
+
 import com.github.ros.roxanne_sa.ai.deliberative.solver.SearchSpaceNode;
 import com.github.ros.roxanne_sa.ai.deliberative.strategy.ex.EmptyFringeException;
 import com.github.ros.roxanne_sa.ai.framework.domain.component.ComponentValue;
@@ -26,6 +28,9 @@ import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.flaw.Flaw;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.flaw.FlawType;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.resolver.plan.Goal;
 import com.github.ros.roxanne_sa.ai.framework.utils.properties.FilePropertyReader;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 /**
  * 
@@ -50,6 +55,12 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	protected double planningCost;											// general planning cost
 	protected double expansionCost;											// detailed planning cost
 	protected double unificationCost;										// detailed unification cost
+	
+	
+	// set client connection
+	MongoClient client;
+	// prepare collection
+	MongoCollection<Document> collection;
 	
 	/**
 	 * 
@@ -98,6 +109,25 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		// export hierarchy
 		this.exportHierarchyGraph(this.dhierarchy);
 		
+		
+		// get deliberative property file
+		FilePropertyReader properties = new FilePropertyReader(
+				FRAMEWORK_HOME + FilePropertyReader.DEFAULT_DELIBERATIVE_PROPERTY);
+		
+		// get mongodb
+		String mongodb = properties.getProperty("mongodb").trim();
+		// check if exists
+		if (mongodb != null && !mongodb.equals("")) 
+		{
+			// create a collection to the DB
+			this.client = new MongoClient();
+			// get db 
+			MongoDatabase db = this.client.getDatabase(mongodb);
+			// get collection
+			this.collection = db.getCollection("search_data");
+			// remove all data from the collection
+			this.collection.drop();
+		}
 	}
 	
 	
@@ -107,41 +137,92 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	 * @param value
 	 * @return
 	 */
-	private double computePlanningCost(ComponentValue value) 
+	private Map<DomainComponent, Double[]> computeCostProjections(ComponentValue value) 
 	{
+		// set cost
+		Map<DomainComponent, Double[]> cost = new HashMap<>();
+		// get hierarchical value of the associated component
+		double hValue = this.pdb.getDomainKnowledge().getHierarchicalLevelValue(value.getComponent()) + 1;
+					
 		// check if leaf
 		if (!this.pgraph.containsKey(value) || 
 				this.pgraph.get(value).isEmpty()) 
 		{
-			// get hierarchical value of the associated component
-			double hValue = this.pdb.getDomainKnowledge().getHierarchicalLevelValue(value.getComponent()) + 1;
-			// base base as expansion cost of a single decision 
-			return 1.0 * hValue;
+			// set cost
+			cost.put(value.getComponent(), new Double[] {
+					1.0 * hValue,
+					1.0 * hValue
+			});
 		}
 		else 
 		{
-			// get the maximum cost among possible decompositions
-			double cost = 0;
-			
 			// get possible decompositions
 			for (List<ComponentValue> decomposition : this.pgraph.get(value))
 			{
-				// subgoals costs
-				double subgoalCost = 0;
-				for (ComponentValue subgoal : decomposition) {
+				// decomposition costs
+				Map<DomainComponent, Double[]> dCosts = new HashMap<>();
+				for (ComponentValue subgoal : decomposition) 
+				{
 					// compute planning cost of the subgoal
-					subgoalCost += this.computePlanningCost(subgoal);
+					Map<DomainComponent, Double[]> update = this.computeCostProjections(subgoal);
+					for (DomainComponent c : update.keySet()) {
+						if (!dCosts.containsKey(c)) {
+							// set cost
+							dCosts.put(c, new Double[] {
+									update.get(c)[0],
+									update.get(c)[1]
+							});
+						}
+						else {
+							// update cost
+							dCosts.put(c, new Double[] {
+									dCosts.get(c)[0] + update.get(c)[0],
+									dCosts.get(c)[1] + update.get(c)[1]
+							});
+						}
+					}
 				}
 				
-				// update the decomposition cost by taking into account the maximum value
-				cost = Math.max(cost, subgoalCost);
+				// update pessimistic and optimistic projections
+				for (DomainComponent c : dCosts.keySet()) 
+				{
+					if (!cost.containsKey(c)) {
+						// set cost
+						cost.put(c, new Double[] {
+							dCosts.get(c)[0],
+							dCosts.get(c)[1]
+						});
+					}
+					else {
+						// get min and max
+						cost.put(c, new Double[] {
+								Math.min(cost.get(c)[0], dCosts.get(c)[0]),
+								Math.max(cost.get(c)[1], dCosts.get(c)[1])
+						});
+					}
+				}
 			}
-
-			// take into account the hierarchical value of the component
-			double hValue = this.pdb.getDomainKnowledge().getHierarchicalLevelValue(value.getComponent()) + 1;
-			// get computed cost
-			return cost * hValue;
+			
+			// set cost associated to the value
+			if (!cost.containsKey(value.getComponent())) {
+				// set cost
+				cost.put(value.getComponent(), new Double[] {
+						1.0 * hValue,
+						1.0 * hValue
+				});
+			}
+			else {
+			
+				// weight cost according to the hierarchical value
+				cost.put(value.getComponent(), new Double[] {
+						1.0 * hValue + cost.get(value.getComponent())[0],
+						1.0 * hValue + cost.get(value.getComponent())[1]
+				});
+			}
 		}
+		
+		// get cost
+		return cost;
 	}
 	
 	/**
@@ -151,16 +232,19 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	 * @param value
 	 * @return
 	 */
-	private Map<DomainComponent, Long> computeMakespanProjection(ComponentValue value)
+	private Map<DomainComponent, Double[]> computeMakespanProjections(ComponentValue value)
 	{
 		// set data structure
-		Map<DomainComponent, Long> makespan = new HashMap<>();
+		Map<DomainComponent, Double[]> makespan = new HashMap<>();
 		// check if leaf
 		if (!this.pgraph.containsKey(value) || 
 				this.pgraph.get(value).isEmpty()) 
 		{
 			// set value expected minimum duration
-			makespan.put(value.getComponent(), value.getDurationLowerBound());
+			makespan.put(value.getComponent(), new Double[] {
+					(double) value.getDurationLowerBound(),
+					(double) value.getDurationUpperBound()
+			});
 		}
 		else 
 		{
@@ -168,23 +252,28 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 			for (List<ComponentValue> decomposition : this.pgraph.get(value))
 			{
 				// set decomposition makespan 
-				Map<DomainComponent, Long> dMakespan = new HashMap<>();
+				Map<DomainComponent, Double[]> dMakespan = new HashMap<>();
 				// check subgoals
 				for (ComponentValue subgoal : decomposition) 
 				{
 					// recursive call to compute (pessimistic) makespan estimation
-					Map<DomainComponent, Long> sgMakespan = this.computeMakespanProjection(subgoal);
+					Map<DomainComponent, Double[]> update = this.computeMakespanProjections(subgoal);
 					// increment decompostion makespan
-					for (DomainComponent c : sgMakespan.keySet()) {
+					for (DomainComponent c : update.keySet()) {
 						// check decompostion makespan 
 						if (!dMakespan.containsKey(c)) {
 							// add entry 
-							dMakespan.put(c, sgMakespan.get(c));
+							dMakespan.put(c, new Double[] {
+									update.get(c)[0],
+									update.get(c)[1]
+							});
 						}
 						else {
 							// increment component's makespan 
-							dMakespan.put(c, 
-									dMakespan.get(c) + sgMakespan.get(c));
+							dMakespan.put(c, new Double[] {
+									dMakespan.get(c)[0] + update.get(c)[0],
+									dMakespan.get(c)[1] + update.get(c)[1]
+							});
 						}
 					}
 				}
@@ -194,14 +283,36 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 					// check makespan
 					if (!makespan.containsKey(c)) {
 						// add entry
-						makespan.put(c, dMakespan.get(c));
+						makespan.put(c, new Double[] {
+								dMakespan.get(c)[0],
+								dMakespan.get(c)[1]
+						});
 					}
 					else {
 						// set the max
-						makespan.put(c, 
-								Math.max(makespan.get(c), dMakespan.get(c)));
+						makespan.put(c, new Double[] {
+								Math.max(makespan.get(c)[0], dMakespan.get(c)[0]),
+								Math.min(makespan.get(c)[1], dMakespan.get(c)[1])
+						});
 					}
 				}
+			}
+			
+			// set cost associated to the value
+			if (!makespan.containsKey(value.getComponent())) {
+				// set cost
+				makespan.put(value.getComponent(), new Double[] {
+						(double) value.getDurationLowerBound(),
+						(double) value.getDurationUpperBound()
+				});
+			}
+			else {
+			
+				// increment makespan
+				makespan.put(value.getComponent(), new Double[] {
+						makespan.get(value.getComponent())[0] + ((double) value.getDurationLowerBound()),
+						makespan.get(value.getComponent())[1] + ((double) value.getDurationUpperBound())
+				});
 			}
 		}
 		
@@ -252,6 +363,8 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		{
 			// extract the "best" node from the fringe
 			next = this.fringe.remove();
+			// store search data record
+			this.registerSearchChoice(next);
 		}
 		catch (NoSuchElementException ex) {
 			// empty fringe
@@ -268,6 +381,10 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	public void clear() {
 		// clear queue
 		this.fringe.clear();
+		// close DB connection if necessary 
+		if (this.client != null) {
+			this.client.close();
+		}
 	}
 	
 	/**
@@ -278,90 +395,207 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		return "{ \"label\": \"" + this.label + "\" }";
 	}
 	
+	
+	
 	/**
-	 * This method computes a pessimistic evaluation concerning the (planning) distance of 
+	 * 
+	 * @param node
+	 */
+	protected void registerSearchChoice(SearchSpaceNode node) 
+	{
+		// check db collection
+		if (this.collection != null) {
+			// create solving statistic record
+			Document doc = new Document("step", node.getId());
+			doc.append("fringe-size", this.fringe.size());
+			doc.append("node-number-of-flaws", node.getNumberOfFlaws());
+			doc.append("node-depth", node.getDepth());
+			
+			// consolidated values of metrics
+			doc.append("node-plan-cost", node.getPlanCost());
+			doc.append("node-plan-makespan-min", node.getPlanMakespan()[0]);
+			doc.append("node-plan-makespan-max", node.getPlanMakespan()[1]);
+			
+			// heuristic estimation of metrics
+			doc.append("node-heuristic-plan-cost-min", node.getPlanHeuristicCost()[0]);
+			doc.append("node-heuristic-plan-cost-max", node.getPlanHeuristicCost()[1]);
+			doc.append("node-heuristic-plan-makespan-min", node.getPlanHeuristicMakespan()[0]);
+			doc.append("node-heuristic-plan-makespan-max", node.getPlanHeuristicMakespan()[1]);
+			
+			// insert data into the collection
+			this.collection.insertOne(doc);
+		}
+	}
+	
+	/**
+	 * This method computes an evaluation concerning the (planning) distance of 
 	 * a given node from a solution plan. 
 	 * 
 	 * Namely the method computes the expected cost the planner should "pay" to refine 
 	 * the given node and obtain a valid solution. The cost takes into account both planning 
-	 * and scheduling decisions. Also the cost considers possible "gaps" on timelines and 
+	 * and scheduling decisions. Also, the cost considers possible "gaps" on timelines and 
 	 * tries to estimates the planning effort needed to complete the behaviors of 
 	 * related timelines.
+	 * 
+	 * The heuristics computes a cost for each component of the domain and 
+	 * takes into account timeline projections and therefore computes a pessimistic 
+	 * and optimistic evaluation.
 	 * 
 	 * @param node
 	 * @return
 	 */
-	protected double computePlanningHeuristics(SearchSpaceNode node) 
+	protected Map<DomainComponent, Double[]> computeHeuristicCost(SearchSpaceNode node) 
 	{
-		// compute a pessimistic estimation of flaw resolution cost
-		double hValue = 0;
+		// compute an optimistic and pessimistic estimation of planning operations
+		Map<DomainComponent, Double[]> cost = new HashMap<>();
 		// check node flaws and compute heuristic estimation
-		for (Flaw flaw : node.getAgenda()) {
+		for (Flaw flaw : node.getAgenda()) 
+		{
 			// check planning goal 
-			if (flaw.getType().equals(FlawType.PLAN_REFINEMENT)) {
+			if (flaw.getType().equals(FlawType.PLAN_REFINEMENT)) 
+			{
 				// get flaw data
 				Goal goal = (Goal) flaw;
-				// compute planning costs of each subgoal
-				hValue += this.planningCost * this.computePlanningCost(goal.getDecision().getValue());
+				// compute cost projections 
+				Map<DomainComponent, Double[]> update = this.computeCostProjections(goal.getDecision().getValue());
+				// update cost
+				for (DomainComponent c : update.keySet()) {
+					if (!cost.containsKey(c)) {
+						// set cost
+						cost.put(c, new Double[] {
+								this.planningCost * update.get(c)[0],
+								this.planningCost * update.get(c)[1]
+						});
+					}
+					else {
+						// update cost
+						cost.put(c, new Double[] {
+								cost.get(c)[0] + (this.planningCost * update.get(c)[0]),
+								cost.get(c)[1] + (this.planningCost * update.get(c)[1])
+						});
+					}
+				}
 			}
 			
 			// check scheduling goal
-			if (flaw.getType().equals(FlawType.TIMELINE_OVERFLOW)) {
+			if (flaw.getType().equals(FlawType.TIMELINE_OVERFLOW)) 
+			{
 				// get component
 				DomainComponent comp = flaw.getComponent();
-				// get component hierarchy
-				hValue += this.schedulingCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1);
+				// update cost
+				if (!cost.containsKey(comp)) {
+					// set cost
+					cost.put(comp, new Double[] {
+							this.schedulingCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1),
+							this.schedulingCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1)
+					});
+				}
+				else {
+					// update cost
+					cost.put(comp, new Double[] {
+						cost.get(comp)[0] + (this.schedulingCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1)),
+						cost.get(comp)[1] + (this.schedulingCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1))
+					});
+				}
 			}
 			
 			// check scheduling goal
-			if (flaw.getType().equals(FlawType.TIMELINE_BEHAVIOR_PLANNING)) {
+			if (flaw.getType().equals(FlawType.TIMELINE_BEHAVIOR_PLANNING)) 
+			{
 				// get component
 				DomainComponent comp = flaw.getComponent();
-				// get component hierarchy
-				hValue += this.completionCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1);
+				// update cost
+				if (!cost.containsKey(comp)) {
+					// set cost
+					cost.put(comp, new Double[] {
+							this.completionCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1),
+							this.completionCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1)
+					});
+				}
+				else {
+					// update cost
+					cost.put(comp, new Double[] {
+						cost.get(comp)[0] + (this.completionCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1)),
+						cost.get(comp)[1] + (this.completionCost * (this.pdb.getDomainKnowledge().getHierarchicalLevelValue(comp) + 1))
+					});
+				}
 			}
 		}
 		
-		// get value
-		return hValue;
+		
+		// finalize data structure
+		for (DomainComponent c : this.pdb.getComponents()) {
+			if (!cost.containsKey(c)) {
+				cost.put(c, new Double[] {
+						(double) 0, 
+						(double) 0
+				});
+			}
+		}
+		
+		// get cost
+		return cost;
 	}
 	
 	/**
 	 * 
-	 * This method provides a pessimistic evaluation of the makespan of domain components. 
+	 * This method provides an heuristic evaluation of the makespan of domain components.
 	 * 
 	 * Namely, the method considesrs planning subgoals of a given partial plan and computes 
-	 * a pessimistic projection of the makespan of domain components
+	 * a projection of the makespan. The evalution takes into account optmistic and pessimistic
+	 * projections of timelines
 	 * 
 	 * @param node
 	 * @return
 	 */
-	protected Map<DomainComponent, Long> computeMakespanHeuristics(SearchSpaceNode node)
+	protected Map<DomainComponent, Double[]> computeHeuristicMakespan(SearchSpaceNode node)
 	{
 		// initialize makespan projects
-		Map<DomainComponent, Long> projections = new HashMap<>();
-		for (DomainComponent c : this.pdb.getComponents()) {
-			// set initial projection
-			projections.put(c, 0l);
-		}
-		
+		Map<DomainComponent, Double[]> projections = new HashMap<>();
 		// check node flaws and compute heuristic estimation
 		for (Flaw flaw : node.getAgenda()) 
 		{
 			// check planning goals
-			
-			if (flaw.getType().equals(FlawType.PLAN_REFINEMENT)) {
+			if (flaw.getType().equals(FlawType.PLAN_REFINEMENT)) 
+			{
 				// get planning goal
 				Goal goal = (Goal) flaw;
-				// compute goal (pessimistic) projection
-				Map<DomainComponent, Long> gProjection = this.computeMakespanProjection(goal.getDecision().getValue());
+				// compute optimistic and pessimistic projections of makespan from goals
+				Map<DomainComponent, Double[]> update = this.computeMakespanProjections(
+						goal.getDecision().getValue());
 				
 				// update plan projections
-				for (DomainComponent c : gProjection.keySet()) {
-					// increment project
-					projections.put(c, projections.get(c) + gProjection.get(c));
+				for (DomainComponent c : update.keySet()) 
+				{
+					// check projection
+					if (!projections.containsKey(c)) {
+						// set projection
+						projections.put(c, 
+							new Double[] {
+									update.get(c)[0],
+									update.get(c)[1]
+							});
+					}
+					else {
+						// update projection
+						projections.put(c, 
+							new Double[] {
+									projections.get(c)[0] + update.get(c)[0],
+									projections.get(c)[1] + update.get(c)[1]
+							});
+					}
 				}
 				
+			}
+		}
+		
+		// finalize data structure
+		for (DomainComponent c : this.pdb.getComponents()) {
+			if (!projections.containsKey(c)) {
+				projections.put(c, new Double[] {
+						(double) 0, 
+						(double) 0
+				});
 			}
 		}
 		

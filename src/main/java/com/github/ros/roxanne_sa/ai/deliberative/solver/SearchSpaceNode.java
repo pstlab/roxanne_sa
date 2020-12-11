@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.github.ros.roxanne_sa.ai.framework.domain.component.Decision;
 import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponent;
+import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponentType;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.flaw.Flaw;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.flaw.FlawType;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.plan.Plan;
@@ -93,7 +94,7 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 		
 		
 		// set makespan 
-		this.makespan = new HashMap<>(parent.getMakespan());
+		this.makespan = new HashMap<>();
 		this.heuristicCost = new HashMap<>();
 		this.heuristicMakespan = new HashMap<>();
 	}
@@ -239,8 +240,13 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	{
 		// set the partial plan 
 		this.plan = new HashMap<>();
+		// set of components 
+		Set<DomainComponent> cset = new HashSet<>();
+		
 		// check decisions
-		for (Decision dec : partialPlan.getDecisions()) {
+		for (Decision dec : partialPlan.getDecisions()) 
+		{
+			// add component entry 
 			if (!this.plan.containsKey(dec.getComponent())) {
 				// add entry 
 				this.plan.put(dec.getComponent(), new ArrayList<>());
@@ -248,11 +254,51 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 			
 			// add decision variable
 			this.plan.get(dec.getComponent()).add(new DecisionVariable(dec));
+			
+			// check if primitive component
+			if (dec.getComponent().getType().equals(DomainComponentType.SV_PRIMITIVE)) {
+				// add component 
+				cset.add(dec.getComponent());
+			}
 		}
 		
 		
-		// set the makespan
-		this.makespan = new HashMap<>(partialPlan.getMakespan());
+		
+		// set makespan 
+		for (DomainComponent c : cset) 
+		{
+			// get component's decisions
+			if (this.plan.containsKey(c) && !this.plan.get(c).isEmpty()) 
+			{
+				// check last decision
+				DecisionVariable last = this.plan.get(c).get(0);
+				for (int index = 1; index < this.plan.get(c).size(); index++) {
+					// get current decision 
+					DecisionVariable d = this.plan.get(c).get(index);
+					
+					// check if last
+					if (d.getEnd()[0] > last.getEnd()[0]) {
+						// update last decision
+						last = d;
+					}
+				}
+				
+				
+				
+				// set component makespan according to end time bounds of the last decision
+				this.makespan.put(c, new Double[] {
+						(double) last.getEnd()[0],
+						(double) last.getEnd()[1]
+				});
+			}
+			else {
+				// no decision 
+				this.makespan.put(c, new Double[] {
+					(double) 0,
+					(double) 0
+				});
+			}
+		}
 	}
 	
 	/**
@@ -311,17 +357,23 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 * 
 	 * @return
 	 */
-	public double[] getPlanMakespan() {
+	public double[] getPlanMakespan() 
+	{
+		// set the makespan
 		double[] mk = new double[] {
-				Double.MAX_VALUE - 1, 
-				Double.MIN_VALUE + 1
+				Double.MIN_VALUE + 1,  
+				Double.MAX_VALUE - 1
 		};
 		
+		// compute makespan bounds
 		for (DomainComponent c : this.makespan.keySet()) {
-			// update min and max
-			mk[0] = Math.min(mk[0], this.makespan.get(c)[0]);
-			// update max
-			mk[1] = Math.max(mk[1], this.makespan.get(c)[1]);
+			// check primitive components only
+			if (c.getType().equals(DomainComponentType.SV_PRIMITIVE)) {
+				// update min and max
+				mk[0] = Math.max(mk[0], this.makespan.get(c)[0]);
+				// update max
+				mk[1] = Math.min(mk[1], this.makespan.get(c)[1]);
+			}
 		}
 		
 		// get plan makespan 
@@ -332,17 +384,23 @@ public class SearchSpaceNode implements Comparable<SearchSpaceNode>
 	 * 
 	 * @return
 	 */
-	public double[] getPlanHeuristicMakespan() {
+	public double[] getPlanHeuristicMakespan() 
+	{
+		// set heuristic makespan
 		double[] mk = new double[] {
-				Double.MAX_VALUE - 1, 
-				Double.MIN_VALUE + 1
+				Double.MAX_VALUE - 1,
+				Double.MIN_VALUE + 1 
 		};
 		
+		// check heuristic makespan bounds of components 
 		for (DomainComponent c : this.heuristicMakespan.keySet()) {
-			// update min and max
-			mk[0] = Math.min(mk[0], this.heuristicMakespan.get(c)[0]);
-			// update max
-			mk[1] = Math.max(mk[1], this.heuristicMakespan.get(c)[1]);
+			// consider primitive components only 
+			if (c.getType().equals(DomainComponentType.SV_PRIMITIVE)) {
+				// update min and max
+				mk[0] = Math.min(mk[0], this.heuristicMakespan.get(c)[0]);
+				// update max
+				mk[1] = Math.max(mk[1], this.heuristicMakespan.get(c)[1]);
+			}
 		}
 		
 		// get plan makespan 

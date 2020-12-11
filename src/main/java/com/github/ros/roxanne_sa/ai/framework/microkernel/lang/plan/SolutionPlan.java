@@ -526,7 +526,6 @@ public class SolutionPlan
 		// initialize solution plan description
 		String description = "{\n"
 				+ "\t\"horizon\": " + this.horizion + ",\n"
-				+ "\t\"makespan\": [" + this.makespan[0] +", " + this.makespan[1] + "],\n"
 				+ "\t\"controllability\": \"" + this.controllability.toString().toLowerCase() + "\",\n";
 		
 		// print timelines 

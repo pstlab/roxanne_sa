@@ -58,9 +58,9 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	
 	
 	// set client connection
-	MongoClient client;
+	protected MongoClient client;
 	// prepare collection
-	MongoCollection<Document> collection;
+	protected MongoCollection<Document> collection;
 	
 	/**
 	 * 
@@ -243,7 +243,7 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 			// set value expected minimum duration
 			makespan.put(value.getComponent(), new Double[] {
 					(double) value.getDurationLowerBound(),
-					(double) value.getDurationUpperBound()
+					(double) value.getDurationLowerBound()
 			});
 		}
 		else 
@@ -289,10 +289,10 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 						});
 					}
 					else {
-						// set the max
+						// set the pessimistic and optimistic projections
 						makespan.put(c, new Double[] {
-								Math.max(makespan.get(c)[0], dMakespan.get(c)[0]),
-								Math.min(makespan.get(c)[1], dMakespan.get(c)[1])
+								Math.min(makespan.get(c)[0], dMakespan.get(c)[0]),
+								Math.max(makespan.get(c)[1], dMakespan.get(c)[1])
 						});
 					}
 				}
@@ -303,7 +303,7 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 				// set cost
 				makespan.put(value.getComponent(), new Double[] {
 						(double) value.getDurationLowerBound(),
-						(double) value.getDurationUpperBound()
+						(double) value.getDurationLowerBound()
 				});
 			}
 			else {
@@ -311,7 +311,7 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 				// increment makespan
 				makespan.put(value.getComponent(), new Double[] {
 						makespan.get(value.getComponent())[0] + ((double) value.getDurationLowerBound()),
-						makespan.get(value.getComponent())[1] + ((double) value.getDurationUpperBound())
+						makespan.get(value.getComponent())[1] + ((double) value.getDurationLowerBound())
 				});
 			}
 		}
@@ -394,9 +394,7 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		// JSON like object description
 		return "{ \"label\": \"" + this.label + "\" }";
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * @param node
@@ -585,7 +583,6 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 							});
 					}
 				}
-				
 			}
 		}
 		

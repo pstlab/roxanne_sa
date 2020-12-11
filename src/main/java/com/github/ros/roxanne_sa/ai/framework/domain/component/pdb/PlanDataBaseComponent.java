@@ -282,17 +282,10 @@ public final class PlanDataBaseComponent extends DomainComponent implements Plan
 			plan.add(rel);
 		}
 		
-		// compute the resulting plan makespan
-		double[] mk = this.getMakespan();
-		plan.setMakespan(mk);
-		
-		// compute the average behavior duration
-		double[] d = this.getBehaviorDuration();
-		plan.setBehaviorDuration(d);
-		
 		// computer parameter solutions
 		ComputeSolutionParameterQuery query = this.pdb.
 				createQuery(ParameterQueryType.COMPUTE_SOLUTION);
+		
 		// process query
 		this.pdb.process(query);
 		// get current plan

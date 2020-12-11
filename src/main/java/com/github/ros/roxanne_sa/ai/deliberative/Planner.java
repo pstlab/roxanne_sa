@@ -106,6 +106,14 @@ public class Planner extends FrameworkObject
 	 * 
 	 * @return
 	 */
+	public SearchSpaceNode getCurrentNode() {
+		return this.currentSolution;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	@Override
 	public String toString() {
 		// get a description of the plan data base

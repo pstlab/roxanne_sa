@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponent;
+import com.github.ros.roxanne_sa.ai.framework.domain.component.DomainComponentType;
 import com.github.ros.roxanne_sa.ai.framework.domain.component.Token;
 import com.github.ros.roxanne_sa.ai.framework.domain.component.sv.StateVariable;
 import com.github.ros.roxanne_sa.ai.framework.microkernel.ConstraintCategory;
@@ -38,8 +39,6 @@ public class SolutionPlan
 	private Set<Timeline> observations;
 	private List<Relation> relations;
 	private PlanControllabilityType controllability;
-	private double[] makespan;
-	private double[] duration;
 	
 	/**
 	 * 
@@ -54,15 +53,6 @@ public class SolutionPlan
 		this.observations = new HashSet<>();
 		this.relations = new ArrayList<>();
 		this.controllability = PlanControllabilityType.UNKNOWN;
-		this.makespan = new double[] {
-				Double.MAX_VALUE - 1, 
-				Double.MAX_VALUE - 1
-		};
-		
-		this.duration = new double[] {
-				Double.MAX_VALUE -1, 
-				Double.MAX_VALUE -1 
-		};
 	}
 	
 	/**
@@ -83,34 +73,95 @@ public class SolutionPlan
 	
 	/**
 	 * 
-	 * @param makespan
-	 */
-	public void setMakespan(double[] makespan) {
-		this.makespan = makespan;
-	}
-	
-	/**
-	 * 
-	 * @param duration
-	 */
-	public void setBehaviorDuration(double[] duration) {
-		this.duration = duration;
-	}
-	
-	/**
-	 * 
 	 * @return
 	 */
-	public double[] getBehaviorDuration() {
-		return this.duration;
+	public double[] getMakespan() 
+	{
+		// set makespan 
+		double[] mk = new double[] {
+				Double.MIN_VALUE + 1,  
+				Double.MAX_VALUE - 1
+		};
+		
+		// check timelines
+		for (Timeline tl : this.timelines) 
+		{
+			// check primitive components only 
+			if (tl.getComponent().getType().equals(DomainComponentType.SV_PRIMITIVE))
+			{
+				// get last token of the timeline
+				Token last = tl.getTokens().get(0);
+				for (int index = 1; index < tl.getTokens().size(); index++) {
+					// get token 
+					Token t = tl.getTokens().get(index);
+					// check last token 
+					if (t.getInterval().getEndTime().getLowerBound() > last.getInterval().getEndTime().getLowerBound()) {
+						// update last token
+						last = t;
+					}
+				}
+				
+				// update max end time
+				mk[0] = Math.max(mk[0], last.getInterval().getEndTime().getLowerBound());
+				mk[1] = Math.min(mk[1], last.getInterval().getEndTime().getUpperBound());
+			}
+		}
+		
+		
+		// get makespan
+		return mk;
 	}
-	
+
 	/**
 	 * 
+	 * @param compName
 	 * @return
 	 */
-	public double[] getMakespan() {
-		return makespan;
+	public double[] getMakespan(String name) 
+	{
+		// set makespan 
+		double[] mk = new double[] {
+				0.0,
+				0.0
+		};
+		
+		// check timelines
+		for (Timeline tl : this.timelines) 
+		{
+			// check primitive components only 
+			if (tl.getComponent().getName().equals(name))
+			{
+				// preapre makespan
+				mk = new double[] {
+						Double.MIN_VALUE + 1,  
+						Double.MAX_VALUE - 1
+				};
+				
+				
+				// get last token of the timeline
+				Token last = tl.getTokens().get(0);
+				for (int index = 1; index < tl.getTokens().size(); index++) {
+					// get token 
+					Token t = tl.getTokens().get(index);
+					// check last token 
+					if (t.getInterval().getEndTime().getLowerBound() > last.getInterval().getEndTime().getLowerBound()) {
+						// update last token
+						last = t;
+					}
+				}
+				
+				// update max end time
+				mk[0] = Math.max(mk[0], last.getInterval().getEndTime().getLowerBound());
+				mk[1] = Math.min(mk[1], last.getInterval().getEndTime().getUpperBound());
+				
+				// stop search
+				break;
+			}
+		}
+		
+		
+		// get makespan
+		return mk;
 	}
 	
 	/**
@@ -523,10 +574,13 @@ public class SolutionPlan
 	@Override
 	public String toString() 
 	{
+		// get plan makespan 
+		double[] mk = this.getMakespan();
 		// initialize solution plan description
 		String description = "{\n"
 				+ "\t\"horizon\": " + this.horizion + ",\n"
-				+ "\t\"controllability\": \"" + this.controllability.toString().toLowerCase() + "\",\n";
+				+ "\t\"controllability\": \"" + this.controllability.toString().toLowerCase() + "\",\n"
+				+ "\t\"makespan\": [" + mk[0] + ", " + mk[1] + "],\n";
 		
 		// print timelines 
 		description += "\t\"timelines\": [\n";

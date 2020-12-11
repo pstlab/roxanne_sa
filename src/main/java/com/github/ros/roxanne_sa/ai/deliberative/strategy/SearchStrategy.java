@@ -58,7 +58,7 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 	
 	
 	// set client connection
-	protected MongoClient client;
+	protected static MongoClient client;
 	// prepare collection
 	protected MongoCollection<Document> collection;
 	
@@ -120,9 +120,14 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		if (mongodb != null && !mongodb.equals("")) 
 		{
 			// create a collection to the DB
-			this.client = new MongoClient();
+			if (client == null) {
+				// set connection
+				client = new MongoClient();
+			}
+			
+			
 			// get db 
-			MongoDatabase db = this.client.getDatabase(mongodb);
+			MongoDatabase db = client.getDatabase(mongodb);
 			// get collection
 			this.collection = db.getCollection("search_data");
 			// remove all data from the collection
@@ -382,8 +387,9 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		// clear queue
 		this.fringe.clear();
 		// close DB connection if necessary 
-		if (this.client != null) {
-			this.client.close();
+		if (client != null) {
+			client.close();
+			client = null;
 		}
 	}
 	

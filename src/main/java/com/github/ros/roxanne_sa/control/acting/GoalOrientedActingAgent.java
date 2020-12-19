@@ -188,11 +188,19 @@ public class GoalOrientedActingAgent
 			// set executive class
 			this.eClass = (Class<? extends Executive>) Class.forName(executiveClassName);
 			
+			
+			
 			// read the class of the platform 
 			String platformClassName = this.properties.getProperty("platform");
 			// check if a platform is necessary
 			if (platformClassName != null && !platformClassName.equals("")) 
 			{
+				// print agent configuration
+				System.out.println("Configuration of the Goal-Oriented Acting Agent:\n"
+						+ "- Deliberative: " + plannerClassName + "\n"
+						+ "- Executive: " + executiveClassName + "\n"
+						+ "- Platform: " + platformClassName + "\n");
+				
 				// get platform configuration file 
 				String configFile = this.properties.getProperty("platform_config_file");
 				// check platform configuration file 
@@ -206,9 +214,20 @@ public class GoalOrientedActingAgent
 				// create PROXY
 				this.proxy = PlatformProxyBuilder.build(clazz, configFile);
 			}
+			else 
+			{
+				// print agent configuration
+				System.out.println("Configuration of the Goal-Oriented Acting Agent:\n"
+						+ "- deliberative: " + plannerClassName + "\n"
+						+ "- executive: " + executiveClassName + "\n");
+			}
+			
 			
 			// setup deliberative and executive processes
 			this.setupProcesses();
+			
+			
+			
 		}
 		catch (Exception ex) {
 			throw new RuntimeException(ex.getMessage());

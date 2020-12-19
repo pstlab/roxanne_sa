@@ -10,16 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.bson.Document;
-
 import com.github.ros.roxanne_sa.ai.framework.time.tn.ex.DistanceConstraintNotFoundException;
 import com.github.ros.roxanne_sa.ai.framework.time.tn.ex.InconsistentDistanceConstraintException;
 import com.github.ros.roxanne_sa.ai.framework.time.tn.ex.IntervalDisjunctionException;
 import com.github.ros.roxanne_sa.ai.framework.time.tn.ex.NotCompatibleConstraintsFoundException;
 import com.github.ros.roxanne_sa.ai.framework.time.tn.ex.TimePointNotFoundException;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 /**
  * 
@@ -36,10 +31,6 @@ public final class SimpleTemporalNetworkWithUncertainty extends TemporalNetwork
 	// contingent links
 	private Map<TimePoint, Map<TimePoint, TimePointDistanceConstraint>> contingents;
 	
-	// create a collection to the DB
-	private MongoClient client;
-	private int statRecordId;
-	
 	/**
 	 * 
 	 * @param origin
@@ -48,16 +39,6 @@ public final class SimpleTemporalNetworkWithUncertainty extends TemporalNetwork
 	public SimpleTemporalNetworkWithUncertainty(long origin, long horizon) 
 	{
 		super(origin, horizon);
-		
-		// set connection to the DB 
-		this.client = new MongoClient();
-		this.statRecordId = 0;
-		// get db 
-		MongoDatabase db = this.client.getDatabase("roxanne_search");
-		// get collection
-		MongoCollection<Document> collection = db.getCollection("temporal_reasoning_data");
-		// remove all data from the collection
-		collection.drop();
 		
 		// initialize data structures
 		this.points = new HashMap<>();
@@ -681,30 +662,5 @@ public final class SimpleTemporalNetworkWithUncertainty extends TemporalNetwork
 				throw new RuntimeException(ex.getMessage());
 			}
 		}			
-		
-		// count number of requirement constraints
-		int nRequirements = 0;
-		for (TimePoint p : this.requirements.keySet()) {
-			nRequirements += this.requirements.get(p).values().size();
-		}
-		
-		// count number of contingent links
-		int nContingents = 0;
-		for (TimePoint p : this.contingents.keySet()) {
-			nContingents += this.contingents.get(p).values().size();
-		}
-		
-		
-		MongoDatabase db = this.client.getDatabase("roxanne_search");
-		// get collection
-		MongoCollection<Document> collection = db.getCollection("temporal_reasoning_data");
-		// create solving statistic record
-		Document doc = new Document("_id", this.statRecordId++);
-		doc.append("horizon", (int) this.horizon);
-		doc.append("number-of-time-points", this.points.size());
-		doc.append("number-of-requirements", nRequirements);
-		doc.append("number-of-contingencies", nContingents);
-		// insert data into the collection
-		collection.insertOne(doc);
 	}
 }

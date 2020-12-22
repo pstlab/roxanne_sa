@@ -245,6 +245,15 @@ public abstract class SearchStrategy extends FrameworkObject implements Comparat
 		if (!this.pgraph.containsKey(value) || 
 				this.pgraph.get(value).isEmpty()) 
 		{
+//			// get average duration
+//			double avg = (value.getDurationLowerBound() + value.getDurationUpperBound()) / 2.0;
+//			// set value expected average duration
+//			makespan.put(value.getComponent(), 
+//					new Double[] {
+//							avg,
+//							avg
+//					});
+			
 			// set value expected minimum duration
 			makespan.put(value.getComponent(), new Double[] {
 					(double) value.getDurationLowerBound(),

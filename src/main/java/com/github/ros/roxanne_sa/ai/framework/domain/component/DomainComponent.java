@@ -723,7 +723,7 @@ public abstract class DomainComponent extends FrameworkObject
 		if (this.isPending(dec)) {
 			// warning information
 			warning("Trying to deactivate an already pending decision:\n- decision: " + dec + "\n");
-			throw new RuntimeException("Trying to deactivate an already pending decision:\n- decision: " + dec + "\n");	
+//			throw new RuntimeException("Trying to deactivate an already pending decision:\n- decision: " + dec + "\n");	
 		}
 		
 		// check if active

@@ -1,10 +1,10 @@
 package com.github.ros.roxanne_sa.platform.rosbridge;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.ros.roxanne_sa.control.lang.PlatformObservation;
-import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
 import com.github.ros.roxanne_sa.platform.msgs.Observation;
 
+import it.cnr.istc.pst.platinum.control.lang.PlatformObservation;
+import it.cnr.istc.pst.platinum.control.lang.ex.PlatformCommunicationException;
 import ros.tools.MessageUnpacker;
 
 /**

@@ -19,11 +19,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.github.ros.roxanne_sa.ai.executive.pdb.ExecutionNode;
-import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
-import com.github.ros.roxanne_sa.platform.PlatformProxy;
-import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
-
+import it.cnr.istc.pst.platinum.ai.executive.pdb.ExecutionNode;
+import it.cnr.istc.pst.platinum.control.lang.PlatformCommand;
+import it.cnr.istc.pst.platinum.control.lang.ex.PlatformException;
+import it.cnr.istc.pst.platinum.control.platform.PlatformProxy;
 import ros.Publisher;
 import ros.RosBridge;
 import ros.SubscriptionRequestMsg;

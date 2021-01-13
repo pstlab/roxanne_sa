@@ -3,11 +3,13 @@ package com.github.ros.roxanne_sa.ai.deliberative;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-import com.github.ros.roxanne_sa.ai.framework.domain.PlanDataBaseBuilder;
-import com.github.ros.roxanne_sa.ai.framework.domain.component.PlanDataBase;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.ex.NoSolutionFoundException;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.ex.ProblemInitializationException;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.plan.SolutionPlan;
+import it.cnr.istc.pst.platinum.ai.deliberative.Planner;
+import it.cnr.istc.pst.platinum.ai.deliberative.PlannerBuilder;
+import it.cnr.istc.pst.platinum.ai.framework.domain.PlanDataBaseBuilder;
+import it.cnr.istc.pst.platinum.ai.framework.domain.component.PlanDataBase;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.lang.ex.NoSolutionFoundException;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.lang.ex.ProblemInitializationException;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.lang.plan.SolutionPlan;
 
 /**
  * 
@@ -16,16 +18,9 @@ import com.github.ros.roxanne_sa.ai.framework.microkernel.lang.plan.SolutionPlan
  */
 public class DeliberativeTester 
 {
-	private static final String DDL = "domains/sharework/stiima/hrc_mosaic_v1.ddl";
-	private static final String PDL = "domains/sharework/stiima/hrc_mosaic.pdl";
-	
-//	private static final String DDL = "domains/hrc_mosaic_gen.ddl";
-//	private static final String PDL = "domains/hrc_mosaic_gen.pdl";
-	
-//	private static final String DDL = "domains/satellite.ddl";
-//	private static final String PDL = "domains/satellite.pdl";
+	private static final String DDL = "domains/satellite.ddl";
+	private static final String PDL = "domains/satellite.pdl";
 	private static final String OUT = "plans";
-	
 	
 	/**
 	 * 

@@ -60,28 +60,10 @@
 	</dependency>
  	
   	<dependency>
-	    <groupId>org.apache.commons</groupId>
-	    <artifactId>commons-lang3</artifactId>
-	    <version>3.10</version>
+		<groupId>it.cnr.istc.pst</groupId>
+  		<artifactId>platinum</artifactId>
+  		<version>[1.0.0,)</version>
 	</dependency>
-	
-  	<dependency>
-  		<groupId>org.choco-solver</groupId>
-  		<artifactId>choco-solver</artifactId>
-		<version>4.0.2</version>
-  	</dependency>
-  	
-  	<dependency>
-  		<groupId>org.antlr</groupId>
-  		<artifactId>antlr</artifactId>
-  		<version>3.5.2</version>
-  	</dependency>
-  	
-  	<dependency>
-  		<groupId>org.jfree</groupId>
-  		<artifactId>jfreechart</artifactId>
-  		<version>1.0.19</version>
-  	</dependency>
   	
   	<dependency>
 	  <groupId>edu.brown.cs.burlap</groupId>

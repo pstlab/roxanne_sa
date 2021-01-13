@@ -1,7 +1,6 @@
 package com.github.ros.roxanne_sa.platform.rosbridge;
 
-import com.github.ros.roxanne_sa.control.lang.PlatformCommand;
-
+import it.cnr.istc.pst.platinum.control.lang.PlatformCommand;
 import ros.Publisher;
 
 /**

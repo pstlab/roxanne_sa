@@ -1,10 +1,10 @@
 package com.github.ros.roxanne_sa.platform.rosbridge;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.ros.roxanne_sa.control.acting.GoalOrientedActingAgent;
-import com.github.ros.roxanne_sa.control.lang.AgentTaskDescription;
-import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
 
+import it.cnr.istc.pst.platinum.control.acting.GoalOrientedActingAgent;
+import it.cnr.istc.pst.platinum.control.lang.AgentTaskDescription;
+import it.cnr.istc.pst.platinum.control.lang.ex.PlatformCommunicationException;
 import ros.RosListenDelegate;
 
 /**

@@ -1,14 +1,14 @@
 package com.github.ros.roxanne_sa.ai.deliberative;
 
-import com.github.ros.roxanne_sa.ai.deliberative.Planner;
-import com.github.ros.roxanne_sa.ai.deliberative.heuristic.pipeline.PipelineFlawSelectionHeuristic;
-import com.github.ros.roxanne_sa.ai.deliberative.solver.PseudoControllabilityAwareSolver;
-import com.github.ros.roxanne_sa.ai.deliberative.strategy.GreedyDepthSearchStrategy;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.annotation.cfg.FrameworkLoggerConfiguration;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.annotation.cfg.deliberative.FlawSelectionHeuristicsConfiguration;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.annotation.cfg.deliberative.PlannerSolverConfiguration;
-import com.github.ros.roxanne_sa.ai.framework.microkernel.annotation.cfg.deliberative.SearchStrategyConfiguration;
-import com.github.ros.roxanne_sa.ai.framework.utils.log.FrameworkLoggingLevel;
+import it.cnr.istc.pst.platinum.ai.deliberative.Planner;
+import it.cnr.istc.pst.platinum.ai.deliberative.heuristic.pipeline.PipelineFlawSelectionHeuristic;
+import it.cnr.istc.pst.platinum.ai.deliberative.solver.PseudoControllabilityAwareSolver;
+import it.cnr.istc.pst.platinum.ai.deliberative.strategy.GreedyDepthSearchStrategy;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.annotation.cfg.FrameworkLoggerConfiguration;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.annotation.cfg.deliberative.FlawSelectionHeuristicsConfiguration;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.annotation.cfg.deliberative.PlannerSolverConfiguration;
+import it.cnr.istc.pst.platinum.ai.framework.microkernel.annotation.cfg.deliberative.SearchStrategyConfiguration;
+import it.cnr.istc.pst.platinum.ai.framework.utils.log.FrameworkLoggingLevel;
 
 
 @PlannerSolverConfiguration(

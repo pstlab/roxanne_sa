@@ -17,11 +17,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.github.ros.roxanne_sa.ai.framework.utils.properties.FilePropertyReader;
-import com.github.ros.roxanne_sa.control.acting.GoalOrientedActingAgent;
-import com.github.ros.roxanne_sa.control.lang.Goal;
 import com.github.ros.roxanne_sa.platform.rosbridge.RosBridgeGoalListener;
 
+import it.cnr.istc.pst.platinum.ai.framework.utils.properties.FilePropertyReader;
+import it.cnr.istc.pst.platinum.control.acting.GoalOrientedActingAgent;
+import it.cnr.istc.pst.platinum.control.lang.Goal;
 import ros.RosBridge;
 import ros.SubscriptionRequestMsg;
 

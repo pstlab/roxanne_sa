@@ -1,10 +1,10 @@
 package com.github.ros.roxanne_sa.platform.rosbridge;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.ros.roxanne_sa.control.lang.PlatformMessage;
-import com.github.ros.roxanne_sa.platform.lang.ex.PlatformCommunicationException;
-import com.github.ros.roxanne_sa.platform.lang.ex.PlatformException;
 
+import it.cnr.istc.pst.platinum.control.lang.PlatformMessage;
+import it.cnr.istc.pst.platinum.control.lang.ex.PlatformCommunicationException;
+import it.cnr.istc.pst.platinum.control.lang.ex.PlatformException;
 import ros.RosListenDelegate;
 
 /**

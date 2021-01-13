@@ -1,6 +1,6 @@
 package com.github.ros.roxanne_sa.platform.msgs;
 
-import com.github.ros.roxanne_sa.control.lang.PlatformFeedbackType;
+import it.cnr.istc.pst.platinum.control.lang.PlatformFeedbackType;
 
 /**
  * 

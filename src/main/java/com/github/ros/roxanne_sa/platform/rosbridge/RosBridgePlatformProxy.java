@@ -249,7 +249,7 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		}
 		
 		// check token name
-		String cmdName = PlatformProxy.extractCommandName(node);
+		String cmdName = this.extractCommandName(node);
 		// check component name
 		String compName = node.getComponent();
 		
@@ -287,12 +287,17 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		}
 		
 		// extract command name
-		String cmdName = PlatformProxy.extractCommandName(node);
+		String cmdName = this.extractCommandName(node);
+		String[] cmdParams = this.extractCommandParameters(node);
 		String compName = node.getComponent();
 
 		// create platform command
 		PlatformCommand cmd = new PlatformCommand(
-				cmdIdCounter.getAndIncrement(), node, 1);
+				cmdIdCounter.getAndIncrement(), 
+				cmdName, 
+				cmdParams, 
+				node, 
+				1);
 		
 		// get dispatching topic
 		String topic = this.command2dispatchTopic.get(
@@ -336,11 +341,17 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		
 		
 		// extract command information
-		String cmdName = PlatformProxy.extractCommandName(node);
+		String cmdName = this.extractCommandName(node);
 		String compName = node.getComponent();
+		String[] cmdParams = this.extractCommandParameters(node);
+		
 		// create platform command 
 		PlatformCommand cmd = new PlatformCommand(
-				cmdIdCounter.getAndIncrement(), node, 1);
+				cmdIdCounter.getAndIncrement(), 
+				cmdName, 
+				cmdParams,
+				node, 
+				1);
 		
 		// get dispatcher topic 
 		String topic = this.command2dispatchTopic.get(
@@ -383,11 +394,18 @@ public class RosBridgePlatformProxy extends PlatformProxy
 		}
 		
 		// extract command information
-		String cmdName = PlatformProxy.extractCommandName(node);
+		String cmdName = this.extractCommandName(node);
 		String compName = node.getComponent();
+		// extract command parameters
+		String[] cmdParams = this.extractCommandParameters(node);
+		
 		// create platform command 
 		PlatformCommand cmd = new PlatformCommand(
-				cmdIdCounter.getAndIncrement(), node, 0);
+				cmdIdCounter.getAndIncrement(), 
+				cmdName, 
+				cmdParams, 
+				node, 
+				0);
 		
 		// get dispatcher topic 
 		String topic = this.command2dispatchTopic.get(

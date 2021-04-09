@@ -1,2 +1,2 @@
-# roxanne_sa
+# ROXANNE Stand-Alone Package
 ROXANNE Stand-Alone 

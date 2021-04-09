@@ -35,6 +35,7 @@
   	</properties>	
   	
   	<repositories>
+  	
   		<repository>
 			<id>github</id>
 			<name>GitHub ROXANNE - Stand Alone Apache Maven Package</name>
@@ -62,7 +63,7 @@
   	<dependency>
 		<groupId>it.cnr.istc.pst</groupId>
   		<artifactId>platinum</artifactId>
-  		<version>1.0.8</version>
+  		<version>[1.0.1,)</version>
 	</dependency>
   	
   	<dependency>

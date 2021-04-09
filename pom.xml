@@ -4,7 +4,7 @@
   
   <groupId>com.github.ros</groupId>
   <artifactId>roxanne_sa</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
   
   <name>ROXANNE - Stand Alone</name>
@@ -36,10 +36,17 @@
   	
   	<repositories>
   		<repository>
-			<id>github</id>
+			<id>github_roxanne_sa</id>
 			<name>GitHub ROXANNE - Stand Alone Apache Maven Package</name>
 			<url>https://github.com/pstlab/roxanne_sa.git</url>
 		</repository>
+		
+		<repository>
+			<id>github_platinum</id>
+      			<name>GitHub PSTLab PLATINUm Apache Maven Packages</name>
+       			<url>https://maven.pkg.github.com/pstlab/PLATINUm</url>
+		</repository>
+		
 	</repositories>
   
   <dependencies>

@@ -36,16 +36,16 @@
   	
   	<repositories>
   		<repository>
-			<id>github_roxanne_sa</id>
+			<id>github</id>
 			<name>GitHub ROXANNE - Stand Alone Apache Maven Package</name>
 			<url>https://github.com/pstlab/roxanne_sa.git</url>
 		</repository>
 		
-		<repository>
-			<id>github_platinum</id>
-      			<name>GitHub PSTLab PLATINUm Apache Maven Packages</name>
-       			<url>https://maven.pkg.github.com/pstlab/PLATINUm</url>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>github_platinum</id> -->
+<!--       			<name>GitHub PSTLab PLATINUm Apache Maven Packages</name> -->
+<!--        			<url>https://maven.pkg.github.com/pstlab/PLATINUm</url> -->
+<!-- 		</repository> -->
 		
 	</repositories>
   
@@ -68,7 +68,7 @@
   	<dependency>
 		<groupId>it.cnr.istc.pst</groupId>
   		<artifactId>platinum</artifactId>
-  		<version>[1.0.0,)</version>
+  		<version>[1.0.8,)</version>
 	</dependency>
   	
   	<dependency>

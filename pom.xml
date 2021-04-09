@@ -41,12 +41,6 @@
 			<url>https://github.com/pstlab/roxanne_sa.git</url>
 		</repository>
 		
-<!-- 		<repository> -->
-<!-- 			<id>github_platinum</id> -->
-<!--       			<name>GitHub PSTLab PLATINUm Apache Maven Packages</name> -->
-<!--        			<url>https://maven.pkg.github.com/pstlab/PLATINUm</url> -->
-<!-- 		</repository> -->
-		
 	</repositories>
   
   <dependencies>
